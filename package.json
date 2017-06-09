@@ -1,0 +1,32 @@
+{
+  "name": "stack-from-scratch",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "babel-node src",
+    "test": "eslint src && jest --coverage && flow",
+    "precommit": "yarn test",
+    "prepush": "yarn test"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.3",
+    "babel-preset-env": "^1.5.1",
+    "babel-preset-flow": "^6.23.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-compat": "^1.0.3",
+    "eslint-plugin-flowtype": "^2.34.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
+    "eslint-plugin-react": "^7.0.1",
+    "flow-bin": "^0.47.0",
+    "husky": "^0.13.4",
+    "jest": "^20.0.4"
+  },
+  "browserslist": [
+    "> 1%"
+  ]
+}
