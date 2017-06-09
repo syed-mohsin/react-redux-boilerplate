@@ -3,12 +3,14 @@
 // Note: The .babel.js extension is a Webpack feature to apply
 // Babel transformations to this config file.
 import path from 'path'
+import webpack from 'webpack'
 
 import { WDS_PORT } from './src/shared/config'
 import { isProd } from './src/shared/util'
 
 export default {
   entry: [
+    'react-hot-loader/patch', // must come first or console error
     './src/client',
   ],
   output: {
@@ -27,5 +29,15 @@ export default {
   },
   devServer: {
     port: WDS_PORT,
+    hot: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*', // needed for HMR
+    },
   },
+  plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+  ],
 }
