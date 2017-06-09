@@ -4,17 +4,26 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "babel-node src",
-    "test": "eslint src && jest --coverage && flow",
+    "start": "yarn dev:start",
+    "dev:start": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node src/server",
+    "dev:wds": "webpack-dev-server --progress",
+    "prod:build": "rimraf lib dist && babel src -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
+    "prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
+    "prod:stop": "pm2 delete server",
+    "lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
+    "test": "yarn lint && flow && jest --coverage",
     "precommit": "yarn test",
-    "prepush": "yarn test"
+    "prepush": "yarn test && yarn prod:build"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^20.0.3",
+    "babel-loader": "^7.0.0",
     "babel-preset-env": "^1.5.1",
     "babel-preset-flow": "^6.23.0",
+    "cross-env": "^5.0.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.1",
     "eslint-plugin-compat": "^1.0.3",
@@ -24,9 +33,19 @@
     "eslint-plugin-react": "^7.0.1",
     "flow-bin": "^0.47.0",
     "husky": "^0.13.4",
-    "jest": "^20.0.4"
+    "jest": "^20.0.4",
+    "nodemon": "^1.11.0",
+    "pm2": "^2.5.0",
+    "rimraf": "^2.6.1",
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
   },
   "browserslist": [
     "> 1%"
-  ]
+  ],
+  "dependencies": {
+    "babel-polyfill": "^6.23.0",
+    "compression": "^1.6.2",
+    "express": "^4.15.3"
+  }
 }
