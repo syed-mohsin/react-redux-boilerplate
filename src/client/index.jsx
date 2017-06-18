@@ -11,13 +11,20 @@ import thunkMiddleware from 'redux-thunk'
 import { BrowserRouter } from 'react-router-dom'
 import Immutable from 'immutable'
 
+import $ from 'jquery'
+import Tether from 'tether'
+
 import App from '../shared/app'
 import helloReducer from '../shared/reducer/hello'
-import { APP_CONTAINER_SELECTOR } from '../shared/config'
+import { APP_CONTAINER_SELECTOR, JSS_SSR_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/util'
 
 import setUpSocket from './socket'
 
+// load jquery, tether, and bootstrap's JS code
+window.jQuery = $
+window.Tether = Tether
+require('bootstrap')
 
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = (isProd ? null : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
@@ -54,6 +61,11 @@ if (module.hot) {
     ReactDOM.render(wrapApp(NextApp, store), rootEl)
   })
 }
+
+// remove server-generated JSS
+const jssServerSide = document.querySelector(JSS_SSR_SELECTOR)
+// flow-disable-next-line
+jssServerSide.parentNode.removeChild(jssServerSide)
 
 // socketIO setup
 setUpSocket(store)

@@ -13,6 +13,12 @@ type Props = {
 // { destructure label and handleClick } from props first argument
 // and give flowType Props as defined
 const Button = ({ label, handleClick }: Props) =>
-  <button onClick={handleClick}>{label}</button>
+  (
+    <button
+      onClick={handleClick}
+      className="btn btn-primary"
+      type="button"
+    >{label}</button>
+  )
 
 export default Button
