@@ -14,7 +14,7 @@ const HelloAsyncPage = () =>
       <Helmet
         title={title}
         meta={[
-          { name: 'description', content: 'This page says hello asynchronously' },
+          { name: 'description', content: 'A page to say hello asynchronously' },
           { property: 'og:title', content: title },
         ]}
       />
