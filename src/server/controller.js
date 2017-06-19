@@ -2,6 +2,8 @@
 
 export const homePage = () => null
 
+export const braquetHomePage = () => null
+
 export const helloPage = () => ({
   hello: { message: 'Server-side preloaded message' },
 })
