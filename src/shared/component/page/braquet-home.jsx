@@ -5,7 +5,7 @@ import Helmet from 'react-helmet'
 import injectSheet from 'react-jss'
 import classNames from 'classnames'
 
-import { STATIC_PATH } from '../../config'
+import { STATIC_PATH, APP_NAME } from '../../config'
 
 const styles = {
   homeBackground: {
@@ -56,14 +56,12 @@ const styles = {
   },
 }
 
-const title = 'Braquet'
 const BraquetHomePage = ({ classes }: { classes: Object }) => (
   <div>
     <Helmet
-      title={title}
       meta={[
         { name: 'description', content: 'Search for qualified solar hardware suppliers' },
-        { property: 'og:title', content: title },
+        { property: 'og:title', content: APP_NAME },
       ]}
     />
     <div className={classes.homeBackground}>

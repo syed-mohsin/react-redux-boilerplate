@@ -60,6 +60,8 @@
     "immutable": "4.0.0-rc.2",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "^3.2.1",
+    "mongoose": "^4.10.7",
+    "mongoose-currency": "^0.2.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-helmet": "^5.1.3",

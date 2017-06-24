@@ -5,6 +5,7 @@ import {
   braquetHomePage,
   helloPage,
   helloAsyncPage,
+  quotesPage,
   helloEndpoint,
 } from './controller'
 
@@ -13,6 +14,7 @@ import {
   BRAQUET_HOME_PAGE_ROUTE,
   HELLO_PAGE_ROUTE,
   HELLO_ASYNC_PAGE_ROUTE,
+  QUOTES_PAGE_ROUTE,
   helloEndpointRoute,
 } from '../shared/routes'
 
@@ -25,6 +27,10 @@ export default (app: Object) => {
 
   app.get(BRAQUET_HOME_PAGE_ROUTE, (req, res) => {
     res.send(renderApp(req.url, braquetHomePage()))
+  })
+
+  app.get(QUOTES_PAGE_ROUTE, (req, res) => {
+    res.send(renderApp(req.url, quotesPage()))
   })
 
   app.get(HELLO_PAGE_ROUTE, (req, res) => {
