@@ -30,7 +30,9 @@ export default (app: Object) => {
   })
 
   app.get(QUOTES_PAGE_ROUTE, (req, res) => {
-    res.send(renderApp(req.url, quotesPage()))
+    quotesPage().then((store) => {
+      res.send(renderApp(req.url, null, store))
+    })
   })
 
   app.get(HELLO_PAGE_ROUTE, (req, res) => {

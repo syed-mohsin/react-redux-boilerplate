@@ -6,20 +6,23 @@ import ListItem from './list-item'
 
 class List extends React.Component {
   componentDidMount() {
-    this.props.loadItems()
+    if (!this.props.message) {
+      this.props.loadItems()
+    }
   }
 
   props: {
     loadItems: Function,
     items: Object,
+    message: string,
   };
 
   render() {
     return (
-      <div>
-        <ul>
-          {this.props.items.map(item => <ListItem key={item.get('_id')} item={item} />)}
-        </ul>
+      <div className="list-group">
+        {this.props.items.map(
+          item => <ListItem key={item.get('_id')} item={item} />)
+        }
       </div>
     )
   }

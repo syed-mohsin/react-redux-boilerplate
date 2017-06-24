@@ -10,6 +10,7 @@ export default (app: Object) => {
   app.get(API_GET_QUOTES_ROUTE, (req, res) => {
     Quote.find()
     .populate('organization')
+    .sort('-quoteDate')
     .limit(100)
     .exec()
     .then((quotes) => {

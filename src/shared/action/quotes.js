@@ -13,16 +13,14 @@ export const getQuotesAsyncRequest = createAction(GET_QUOTES_ASYNC_REQUEST)
 export const getQuotesAsyncSuccess = createAction(GET_QUOTES_ASYNC_SUCCESS)
 export const getQuotesAsyncFailure = createAction(GET_QUOTES_ASYNC_FAILURE)
 
-export const getQuotesAsync = () => (dispatch: Function) => {
+export const getQuotesAsync = (domain: ?string) => (dispatch: Function) => {
   dispatch(getQuotesAsyncRequest())
-  fetch(quotesEndpointRoute())
+  return fetch(quotesEndpointRoute(domain))
     .then((res) => {
       if (!res.ok) throw new Error(res.statusText)
       return res.json()
     })
     .then((data) => {
-      // eslint-disable-next-line no-console
-      console.log(data)
       dispatch(getQuotesAsyncSuccess(data))
     })
     .catch((err) => {

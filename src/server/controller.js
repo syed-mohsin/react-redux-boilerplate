@@ -1,10 +1,20 @@
 // @flow
 
+import { getQuotesAsync } from '../shared/action/quotes'
+import initStore from './init-store'
+
 export const homePage = () => null
 
 export const braquetHomePage = () => null
 
-export const quotesPage = () => null
+export const quotesPage = () => {
+  const store = initStore()
+  return new Promise((resolve, reject) => {
+    store.dispatch(getQuotesAsync('http://localhost:3000'))
+    .then(() => resolve(store))
+    .catch(() => reject())
+  })
+}
 
 export const helloPage = () => ({
   hello: { message: 'Server-side preloaded message' },

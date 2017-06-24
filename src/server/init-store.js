@@ -20,8 +20,7 @@ const initStore = (plainPartialState: ?Object) => {
     preloadedState.quotes = quotesReducer(undefined, {})
       .merge(Immutable.fromJS(plainPartialState.quotes))
   }
-  // eslint-disable-next-line no-console
-  console.log('preloaded state', preloadedState)
+
   return createStore(combineReducers({ hello: helloReducer, quotes: quotesReducer }),
     preloadedState, applyMiddleware(thunkMiddleware))
 }

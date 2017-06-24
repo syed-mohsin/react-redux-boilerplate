@@ -12,12 +12,12 @@ import App from './../shared/app'
 import { APP_CONTAINER_CLASS, JSS_SSR_CLASS, STATIC_PATH, WDS_PORT } from '../shared/config'
 import { isProd } from '../shared/util'
 
-const renderApp = (location: string, plainPartialState: ?Object, routerContext: ?Object = {}) => {
-  const store = initStore(plainPartialState)
+const renderApp = (location: string, plainPartialState: ?Object, existingStore: ?Object) => {
+  const store = existingStore || initStore(plainPartialState)
   const sheets = new SheetsRegistry()
   const appHtml = ReactDOMServer.renderToString(
     <Provider store={store}>
-      <StaticRouter location={location} context={routerContext}>
+      <StaticRouter location={location}>
         <SheetsRegistryProvider registry={sheets}>
           <App />
         </SheetsRegistryProvider>
