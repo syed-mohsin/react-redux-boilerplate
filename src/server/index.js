@@ -16,7 +16,7 @@ import setUpSocket from './socket'
 const app = express()
 
 // initialize mongoose connection and load models
-mongoose.connect(isProd ? MONGODB_URI : MONGODB_URI)
+mongoose.connect(isProd ? process.env.MONGODB_URI : MONGODB_URI)
 mongoose.Promise = global.Promise
 loadModels()
 
