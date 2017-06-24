@@ -10,7 +10,7 @@ export const braquetHomePage = () => null
 export const quotesPage = () => {
   const store = initStore()
   return new Promise((resolve, reject) => {
-    store.dispatch(getQuotesAsync('http://localhost:3000'))
+    store.dispatch(getQuotesAsync(process.env.DOMAIN || 'http://localhost:3000'))
     .then(() => resolve(store))
     .catch(() => reject())
   })
