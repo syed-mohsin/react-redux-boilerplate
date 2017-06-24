@@ -15,7 +15,7 @@ const QuotesPage = () =>
     <div>
       <Helmet
         meta={[
-          { name: 'description', content: 'See ' },
+          { name: 'description', content: 'See all dem quotes' },
           { property: 'og:title', content: title },
         ]}
       />
