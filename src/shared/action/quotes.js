@@ -23,7 +23,7 @@ export const getQuotesAsync = (domain: ?string) => (dispatch: Function) => {
     .then((data) => {
       dispatch(getQuotesAsyncSuccess(data))
     })
-    .catch((err) => {
-      dispatch(getQuotesAsyncFailure(err))
+    .catch(() => {
+      dispatch(getQuotesAsyncFailure())
     })
 }
