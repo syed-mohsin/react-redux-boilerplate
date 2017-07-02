@@ -1,6 +1,5 @@
 // @flow
 
-import compression from 'compression'
 import express from 'express'
 import { Server } from 'http'
 import socketIO from 'socket.io'
@@ -16,7 +15,7 @@ import setUpSocket from './socket'
 const app = express()
 
 // initialize mongoose connection and load models
-mongoose.connect(isProd ? process.env.MONGODB_URI : MONGODB_URI)
+mongoose.connect(isProd ? process.env.MONGODB_URI || MONGODB_URI : MONGODB_URI)
 mongoose.Promise = global.Promise
 loadModels()
 
@@ -25,7 +24,12 @@ const http = Server(app)
 const io = socketIO(http)
 setUpSocket(io)
 
-app.use(compression())
+app.get('*.js', (req, res, next) => {
+  req.url = `${req.url}.gz`
+  res.set('Content-Encoding', 'gzip')
+  next()
+})
+
 app.use(STATIC_PATH, express.static('dist'))
 app.use(STATIC_PATH, express.static('public'))
 

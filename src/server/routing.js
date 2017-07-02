@@ -30,8 +30,13 @@ export default (app: Object) => {
   })
 
   app.get(QUOTES_PAGE_ROUTE, (req, res) => {
-    quotesPage().then((store) => {
+    quotesPage(req.query).then((store) => {
       res.send(renderApp(req.url, null, store))
+    })
+    .catch((err) => {
+      // eslint-disable-next-line no-console
+      console.log('ERR', err)
+      res.status(404).send(renderApp(req.url))
     })
   })
 

@@ -4,6 +4,7 @@
 // Babel transformations to this config file.
 import path from 'path'
 import webpack from 'webpack'
+import CompressionPlugin from 'compression-webpack-plugin'
 
 import { WDS_PORT } from './src/shared/config'
 import { isProd } from './src/shared/util'
@@ -35,9 +36,17 @@ export default {
     },
   },
   plugins: [
+    new webpack.optimize.AggressiveMergingPlugin(), // Merge chunks
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'gzip',
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8,
+    }),
   ],
 }

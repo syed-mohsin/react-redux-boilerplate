@@ -20,7 +20,13 @@ const quotesReducer = (state: Immut = initialState, action: { type: string, payl
     case GET_QUOTES_ASYNC_REQUEST:
       return state.set('message', 'loading')
     case GET_QUOTES_ASYNC_SUCCESS:
-      return state.merge({ quotes: action.payload, message: 'success' })
+      // eslint-disable-next-line no-console
+      console.log('payload!', action.payload)
+      return state.merge({
+        quotes: action.payload ? action.payload.quotes : [],
+        count: action.payload ? action.payload.count : 0,
+        message: 'success',
+      })
     case GET_QUOTES_ASYNC_FAILURE:
       return state.set('message', 'failure')
     default:

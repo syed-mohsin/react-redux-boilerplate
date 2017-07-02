@@ -33,7 +33,7 @@ const App = () =>
         <Route exact path={BRAQUET_HOME_PAGE_ROUTE} render={() => <BraquetHomePage />} />
         <Route path={HELLO_PAGE_ROUTE} render={() => <HelloPage />} />
         <Route path={HELLO_ASYNC_PAGE_ROUTE} render={() => <HelloAsyncPage />} />
-        <Route path={QUOTES_PAGE_ROUTE} render={() => <QuotesPage />} />
+        <Route path={QUOTES_PAGE_ROUTE} component={QuotesPage} />
         <Route component={NotFoundPage} />
       </Switch>
       <Footer />

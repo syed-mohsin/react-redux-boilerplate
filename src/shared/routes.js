@@ -1,5 +1,7 @@
 // @flow
 
+import queryString from 'query-string'
+
 export const HOME_PAGE_ROUTE = '/'
 export const HELLO_PAGE_ROUTE = '/hello'
 export const HELLO_ASYNC_PAGE_ROUTE = '/hello-async'
@@ -8,4 +10,7 @@ export const BRAQUET_HOME_PAGE_ROUTE = '/braquet'
 export const QUOTES_PAGE_ROUTE = '/quotes'
 
 export const helloEndpointRoute = (num: ?number) => `/ajax/hello/${num || ':num'}`
-export const quotesEndpointRoute = (domain: ?string) => `${domain || ''}/api/quotes/`
+
+export const quotesEndpointRoute = (domain: ?string, query: ?Object) => (
+  `${domain || ''}/api/quotes/${query ? `?${queryString.stringify(query)}` : ''}`
+)

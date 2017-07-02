@@ -13,9 +13,9 @@ export const getQuotesAsyncRequest = createAction(GET_QUOTES_ASYNC_REQUEST)
 export const getQuotesAsyncSuccess = createAction(GET_QUOTES_ASYNC_SUCCESS)
 export const getQuotesAsyncFailure = createAction(GET_QUOTES_ASYNC_FAILURE)
 
-export const getQuotesAsync = (domain: ?string) => (dispatch: Function) => {
+export const getQuotesAsync = (domain: ?string, query: ?Object) => (dispatch: Function) => {
   dispatch(getQuotesAsyncRequest())
-  return fetch(quotesEndpointRoute(domain))
+  return fetch(quotesEndpointRoute(domain, query))
     .then((res) => {
       if (!res.ok) throw new Error(res.statusText)
       return res.json()

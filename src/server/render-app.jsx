@@ -17,7 +17,7 @@ const renderApp = (location: string, plainPartialState: ?Object, existingStore: 
   const sheets = new SheetsRegistry()
   const appHtml = ReactDOMServer.renderToString(
     <Provider store={store}>
-      <StaticRouter location={location}>
+      <StaticRouter location={location} context={{}}>
         <SheetsRegistryProvider registry={sheets}>
           <App />
         </SheetsRegistryProvider>
