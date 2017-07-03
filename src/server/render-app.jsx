@@ -35,6 +35,19 @@ const renderApp = (location: string, plainPartialState: ?Object, existingStore: 
       <head>
         ${head.title}
         ${head.meta}
+        <style>
+          html, body {
+            height: 100%;
+            margin: 0;
+          }
+          .js-app, .js-app > [data-reactroot] {
+            height: 100%;
+          }
+          .main-app {
+            min-height: 100%;
+            margin-bottom: -50px;
+          }
+        </style>
         <link rel="stylesheet" href="${STATIC_PATH}/css/bootstrap.min.css">
         <style class="${JSS_SSR_CLASS}">${sheets.toString()}</style>
       </head>

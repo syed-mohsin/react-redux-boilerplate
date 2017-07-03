@@ -2,19 +2,38 @@
 
 import mongoose from 'mongoose'
 
-const API_GET_QUOTES_ROUTE = '/api/quotes'
+const API_QUOTES_ROUTE = '/api/quotes'
 
 export default (app: Object) => {
   const Quote = mongoose.model('PriceReview')
 
-  app.get(API_GET_QUOTES_ROUTE, (req, res) => {
+  app.get(API_QUOTES_ROUTE, (req, res) => {
     const queryObj = {}
+    const sortObj = {}
 
     if (req.query.panelType) queryObj.panelType = req.query.panelType
+    if (req.query.quantity && req.query.quantity !== 'all') queryObj.quantity = req.query.quantity
+    if (req.query.panelType) queryObj.panelType = req.query.panelType
+
+    // build query for search using regular expression
+    // escape passed in string
+    if (req.query.brandSearch) {
+      const escapedString = req.query.brandSearch.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&')
+      queryObj.manufacturer = new RegExp(escapedString, 'i')
+    }
+
+    // handle sorting
+    if (req.query.sortBy) {
+      const sortParam = req.query.sortBy
+      if (sortParam === 'price-low') sortObj.price = 1
+      else if (sortParam === 'price-high') sortObj.price = -1
+      else if (sortParam === 'wattage') sortObj.stcPower = -1
+      else sortObj.quoteDate = -1
+    }
 
     const findPromise = Quote.find(queryObj)
     .populate('organization')
-    .sort('-quoteDate')
+    .sort(sortObj)
     .skip((req.query.page - 1 || 0) * 15)
     .limit(15)
     .exec()

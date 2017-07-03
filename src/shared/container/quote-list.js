@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 import queryString from 'query-string'
 
 import List from '../component/list'
-import { getQuotesAsync } from '../action/quotes'
+import { getQuotesAsync, quotesClear } from '../action/quotes'
 
 const mapStateToProps = (state, ownProps) => ({
   items: state.quotes.get('quotes'),
@@ -16,6 +16,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   loadItems: query => dispatch(getQuotesAsync(null, query)),
+  clearState: () => dispatch(quotesClear()),
 })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(List))

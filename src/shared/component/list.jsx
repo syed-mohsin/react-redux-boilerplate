@@ -18,8 +18,13 @@ class List extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.clearState()
+  }
+
   props: {
     loadItems: Function,
+    clearState: Function,
     items: Object,
     message: string,
     query: Object,
@@ -27,7 +32,7 @@ class List extends React.Component {
 
   render() {
     return (
-      <div className="list-group col-xs-3">
+      <div className="list-group">
         {this.props.message && this.props.items.map(
           item => <ListItem key={item.get('_id')} item={item} />)}
       </div>

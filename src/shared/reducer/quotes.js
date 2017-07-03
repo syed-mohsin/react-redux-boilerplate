@@ -4,12 +4,13 @@ import Immutable from 'immutable'
 import type { fromJS as Immut } from 'immutable'
 
 import {
-  GET_QUOTES_ASYNC_REQUEST,
-  GET_QUOTES_ASYNC_SUCCESS,
-  GET_QUOTES_ASYNC_FAILURE,
+  QUOTES_ASYNC_REQUEST,
+  QUOTES_ASYNC_SUCCESS,
+  QUOTES_ASYNC_FAILURE,
+  QUOTES_CLEAR,
 } from '../action/quotes'
 
-const initialState = Immutable.fromJS({ // creates an ImmutableJS collection
+const initialState = Immutable.fromJS({
   quotes: [],
   message: '',
 })
@@ -17,9 +18,9 @@ const initialState = Immutable.fromJS({ // creates an ImmutableJS collection
 // quotes reducer
 const quotesReducer = (state: Immut = initialState, action: { type: string, payload: any }) => {
   switch (action.type) {
-    case GET_QUOTES_ASYNC_REQUEST:
+    case QUOTES_ASYNC_REQUEST:
       return state.set('message', 'loading')
-    case GET_QUOTES_ASYNC_SUCCESS:
+    case QUOTES_ASYNC_SUCCESS:
       // eslint-disable-next-line no-console
       console.log('payload!', action.payload)
       return state.merge({
@@ -27,8 +28,10 @@ const quotesReducer = (state: Immut = initialState, action: { type: string, payl
         count: action.payload ? action.payload.count : 0,
         message: 'success',
       })
-    case GET_QUOTES_ASYNC_FAILURE:
+    case QUOTES_ASYNC_FAILURE:
       return state.set('message', 'failure')
+    case QUOTES_CLEAR:
+      return initialState
     default:
       return state
   }

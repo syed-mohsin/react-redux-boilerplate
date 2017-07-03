@@ -6,12 +6,15 @@ import { withRouter } from 'react-router-dom'
 import ReactPaginate from 'react-paginate'
 import queryString from 'query-string'
 
+import $ from 'jquery'
+
 const ITEMS_PER_PAGE = 15
 
 const pageChangeHandler = (history, location) => (page) => {
   const query = queryString.parse(location.search)
   query.page = page.selected + 1
   history.push(`${location.pathname}?${queryString.stringify(query)}`)
+  $('body').scrollTop(0)
 }
 
 const mapStateToProps = (state, ownProps) => ({
