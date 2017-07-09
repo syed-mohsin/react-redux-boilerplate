@@ -1,10 +1,11 @@
 // @flow
 
 import React from 'react'
+import QuoteResultsCount from '../container/quote-results-count'
 
 const ButtonGroup = (props: Object) => (
-  <div className="input-group" style={{ marginBottom: 20 }}>
-    <input type="text" className="form-control" placeholder="Search for..." />
+  <div className="input-group md-flex justify-content-between" style={{ marginBottom: 20 }}>
+    <QuoteResultsCount />
     <select className="custom-select" name="sortBy" defaultValue={props.query.sortBy || 'recent'} onChange={props.onChange}>
       <option value="">Sort By</option>
       <option value="recent">Most Recent</option>

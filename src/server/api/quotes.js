@@ -28,11 +28,12 @@ export default (app: Object) => {
       if (sortParam === 'price-low') sortObj.price = 1
       else if (sortParam === 'price-high') sortObj.price = -1
       else if (sortParam === 'wattage') sortObj.stcPower = -1
-      else sortObj.quoteDate = -1
+    } else {
+      sortObj.quoteDate = -1
     }
 
     const findPromise = Quote.find(queryObj)
-    .populate('organization')
+    .populate('organization', 'companyName url logoImageUrl')
     .sort(sortObj)
     .skip((req.query.page - 1 || 0) * 15)
     .limit(15)

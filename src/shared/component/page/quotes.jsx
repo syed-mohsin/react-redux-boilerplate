@@ -6,6 +6,7 @@ import injectSheet from 'react-jss'
 
 import QuoteFilterBar from '../../container/quote-filter-bar'
 import QuoteButtonGroup from '../../container/quote-button-group'
+import QuoteResultsCount from '../../container/quote-results-count'
 import QuoteList from '../../container/quote-list'
 import QuotePaginator from '../../container/quote-paginator'
 
@@ -25,13 +26,14 @@ const QuotesPage = () => (
     <QuoteFilterBar />
     <div className="container">
       <div className="row">
-        <div className="col-2" />
-        <div className="col-8">
+        <div className="col-xs-0 col-lg-2" />
+        <div className="col-xs-12 col-lg-8">
           <QuoteButtonGroup />
           <QuoteList />
+          <QuoteResultsCount />
           <QuotePaginator />
         </div>
-        <div className="col-2" />
+        <div className="col-xs-0 col-lg-2" />
       </div>
     </div>
   </div>

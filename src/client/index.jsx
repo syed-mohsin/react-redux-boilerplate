@@ -16,6 +16,7 @@ import Tether from 'tether'
 
 import App from '../shared/app'
 import quotesReducer from '../shared/reducer/quotes'
+import organizationsReducer from '../shared/reducer/organizations'
 import { APP_CONTAINER_SELECTOR, JSS_SSR_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/util'
 
@@ -31,8 +32,17 @@ const composeEnhancers = (isProd ? null : window.__REDUX_DEVTOOLS_EXTENSION_COMP
 const preloadedState = window.__PRELOADED_STATE__
 /* eslint-enable no-underscore-dangle */
 
-const store = createStore(combineReducers({ quotes: quotesReducer }),
-  { quotes: Immutable.fromJS(preloadedState.quotes) },
+const reducers = {
+  quotes: quotesReducer,
+  organizations: organizationsReducer,
+}
+
+const mergedPreloadedState = {
+  quotes: Immutable.fromJS(preloadedState.quotes),
+  organizations: Immutable.fromJS(preloadedState.organizations),
+}
+
+const store = createStore(combineReducers(reducers), mergedPreloadedState,
   composeEnhancers(applyMiddleware(thunkMiddleware)))
 
 // eslint-disable-next-line no-console

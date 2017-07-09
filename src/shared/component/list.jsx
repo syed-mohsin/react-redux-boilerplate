@@ -32,9 +32,13 @@ class List extends React.Component {
 
   render() {
     return (
-      <div className="list-group">
-        {this.props.message && this.props.items.map(
+      <div className="list-group" style={{ marginBottom: 20 }}>
+        {this.props.message === 'success' && this.props.items.size !== 0 &&
+         this.props.items.map(
           item => <ListItem key={item.get('_id')} item={item} />)}
+
+        {(this.props.message === 'failure' || this.props.items.size === 0) &&
+          <div className="alert alert-info text-center">No results</div>}
       </div>
     )
   }

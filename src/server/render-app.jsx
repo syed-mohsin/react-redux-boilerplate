@@ -30,11 +30,12 @@ const renderApp = (location: string, plainPartialState: ?Object, existingStore: 
   const head = Helmet.rewind()
 
   return (
-    `<!doctype html>
+    `<!DOCTYPE html>
     <html>
       <head>
         ${head.title}
         ${head.meta}
+        <meta charset="utf-8">
         <style>
           html, body {
             height: 100%;
@@ -46,6 +47,10 @@ const renderApp = (location: string, plainPartialState: ?Object, existingStore: 
           .main-app {
             min-height: 100%;
             margin-bottom: -50px;
+          }
+          a[role=button] {
+            display: block;
+            width: 100%;
           }
         </style>
         <link rel="stylesheet" href="${STATIC_PATH}/css/bootstrap.min.css">

@@ -6,6 +6,10 @@ export const HOME_PAGE_ROUTE = '/'
 export const QUOTES_PAGE_ROUTE = '/quotes'
 export const NOT_FOUND_DEMO_PAGE_ROUTE = '/404'
 
+export const orgNamesEndpointRoute = (domain: ?string) => (
+  `${domain || ''}/api/organizations/names`
+)
+
 export const quotesEndpointRoute = (domain: ?string, query: ?Object) => (
-  `${domain || ''}/api/quotes/${query ? `?${queryString.stringify(query)}` : ''}`
+  `${domain || ''}/api/quotes${query ? `/?${queryString.stringify(query)}` : ''}`
 )
