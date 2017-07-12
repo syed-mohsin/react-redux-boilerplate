@@ -25,7 +25,9 @@ export default (app: Object) => {
     // handle sorting
     if (req.query.sortBy) {
       const sortParam = req.query.sortBy
-      if (sortParam === 'price-low') sortObj.price = 1
+
+      if (sortParam === 'recent') sortObj.quoteDate = -1
+      else if (sortParam === 'price-low') sortObj.price = 1
       else if (sortParam === 'price-high') sortObj.price = -1
       else if (sortParam === 'wattage') sortObj.stcPower = -1
     } else {
