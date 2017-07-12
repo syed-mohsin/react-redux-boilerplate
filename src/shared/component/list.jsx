@@ -39,7 +39,8 @@ class List extends React.Component {
          this.props.items.map(
           item => <ListItem key={item.get('_id')} item={item} />)}
 
-        {(this.props.message === 'failure' || this.props.items.size === 0) &&
+        {(this.props.message === 'failure' ||
+          (this.props.message === 'success' && this.props.items.size === 0)) &&
           <div className="alert alert-info text-center">No results</div>}
       </div>
     )
