@@ -9,6 +9,7 @@ class List extends React.Component {
   componentDidMount() {
     if (!this.props.message) {
       this.props.loadItems(this.props.query)
+      this.props.loadNames()
     }
   }
 
@@ -24,6 +25,7 @@ class List extends React.Component {
 
   props: {
     loadItems: Function,
+    loadNames: Function,
     clearState: Function,
     items: Object,
     message: string,
