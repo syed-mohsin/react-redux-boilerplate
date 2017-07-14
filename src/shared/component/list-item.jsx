@@ -6,8 +6,12 @@ type Props = {
   item: Object,
 }
 
+const addRef = url => (
+  url.indexOf('?') !== -1 ? `${url}&ref=braquet.io` : `${url}?ref=braquet.io`
+)
+
 const ListItem = ({ item }: Props) => (
-  <a href="" className="list-group-item list-group-item-action">
+  <a href={addRef(item.get('organization').get('url'))} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">
     <div className="media d-flex w-100 justify-content-between">
       <div className="media-left mr-2">
         <img className="img-thumbnail" src={item.get('organization').get('logoImageUrl')} alt="" width="100" />
