@@ -24,6 +24,10 @@ class FilterBar extends React.Component {
   }
 
   componentWillReceiveProps(newProps: Object) {
+    if (!newProps.query.brandSearch) {
+      this.typeahead.getInstance().clear()
+    }
+
     this.setState({
       brandSearch: newProps.query.brandSearch || '',
       panelType: newProps.query.panelType || '',
@@ -32,7 +36,8 @@ class FilterBar extends React.Component {
   }
 
   onBrandChange(items: Object) {
-    this.setState({ brandSearch: items.length ? items[0] : this.props.query.brandSearch || '' })
+    this.setState({ brandSearch: items.length && this.props.query.brandSearch ? items[0] :
+      this.props.query.brandSearch || '' })
   }
 
   onPanelTypeChange(event: Object) {
@@ -46,6 +51,7 @@ class FilterBar extends React.Component {
   onBrandChange: Function
   onPanelTypeChange: Function
   onQuantityChange: Function
+  typeahead: Object
 
   props: {
     orgs: Object,
@@ -61,11 +67,13 @@ class FilterBar extends React.Component {
             {this.props.orgs && <Typeahead
               onChange={this.onBrandChange}
               selected={[this.state.brandSearch]}
+              value={this.state.brandSearch}
               options={this.props.orgs.toArray()}
               className="mb-2 w-100"
               submitFormOnEnter
               placeholder="Select a Brand"
               name="brandSearch"
+              ref={(ref) => { this.typeahead = ref }}
               renderMenu={(results, menuProps) => (
                 <Menu {...menuProps}>
                   {results.map((org, i) => (
