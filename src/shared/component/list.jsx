@@ -2,21 +2,12 @@
 
 import React from 'react'
 import uuid from 'uuid/v1'
-// import the component
-import ContentLoader, { Rect } from 'react-content-loader'
+import $ from 'jquery'
 
+import Loader from './loader'
 import ListItem from './list-item'
 
 const LOADER_COUNT = 5
-
-const Loader = () => (
-  <ContentLoader height={70} speed={1} primaryColor={'#f3eaea'} secondaryColor={'#999'}>
-    <Rect x={0} y={0} height={50} width={50} radius={5} />
-    <Rect x={55} y={0} height={10} radius={5} width={345} />
-    <Rect x={55} y={20} height={10} radius={5} width={345} />
-    <Rect x={55} y={40} height={10} radius={5} width={345} />
-  </ContentLoader>
-)
 
 class List extends React.Component {
   componentDidMount() {
@@ -30,6 +21,10 @@ class List extends React.Component {
     if (JSON.stringify(this.props.query) !== JSON.stringify(newProps.query)) {
       this.props.loadItems(newProps.query)
     }
+  }
+
+  componentDidUpdate() {
+    $('body').scrollTop(0)
   }
 
   componentWillUnmount() {

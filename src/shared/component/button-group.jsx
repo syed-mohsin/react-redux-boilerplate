@@ -14,7 +14,7 @@ const ButtonGroup = (props: Object) => (
       <QuoteResultsCount />
       <Link to={QUOTES_PAGE_ROUTE}>Clear Filter</Link>
     </div>
-    <select className="custom-select" name="sortBy" defaultValue={props.query.sortBy || 'recent'} onChange={props.onChange}>
+    <select className="custom-select" name="sortBy" value={props.query.sortBy || 'recent'} onChange={props.onChange}>
       <option value="">Sort By</option>
       <option value="recent">Most Recent</option>
       <option value="price-low">Price Low to High</option>

@@ -4,8 +4,6 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import queryString from 'query-string'
 
-import $ from 'jquery'
-
 import ButtonGroup from '../component/button-group'
 
 const onChange = (history, location) => (event: Object) => {
@@ -15,7 +13,6 @@ const onChange = (history, location) => (event: Object) => {
   query.page = 1
   query.sortBy = event.target.value
   history.push(`${location.pathname}?${queryString.stringify(query)}`)
-  $('body').scrollTop(0)
 }
 
 const mapStateToProps = (state, ownProps) => ({
