@@ -18,13 +18,17 @@ const ListItem = ({ item }: Props) => (
       </div>
       <div className="media-body">
         <div className="d-flex w-100 justify-content-between">
-          <h6 className="mb-1">
-            {`$${Number(item.get('price') / 100).toFixed(2)}: ${item.get('organization').get('companyName')}`}
-          </h6>
+          <h5 className="mb-1">
+            {`$${Number(item.get('price') / 100).toFixed(2)} per watt`}
+          </h5>
           <small>{(new Date(item.get('quoteDate'))).toLocaleDateString('en-US')}</small>
         </div>
-        <p className="list-group-item-text">{`${item.get('panelType')},
-          ${item.get('manufacturer')}, ${item.get('quantity')}, ${item.get('stcPower')}W`}</p>
+        <p className="list-group-item-text">
+          {`${item.get('stcPower')}W ${item.get('manufacturer')} ${item.get('panelType')} Solar Module`}
+        </p>
+        <p className="list-group-item-text">
+          {`Project Size: ${item.get('quantity')}`}
+        </p>
       </div>
     </div>
   </a>
