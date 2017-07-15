@@ -11,7 +11,7 @@ const ITEMS_PER_PAGE = 15
 
 
 const mapStateToProps = (state, ownProps) => ({
-  totalCount: state.quotes.get('count'),
+  totalCount: state.quotes.get('count') || 0,
   itemsPerPage: ITEMS_PER_PAGE,
   itemsOnCurrentPage: state.quotes.get('quotes') ? state.quotes.get('quotes').size : undefined,
   currentPage: parseInt(queryString.parse(ownProps.location.search).page, 10) || 1,

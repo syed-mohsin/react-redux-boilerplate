@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react'
+import uuid from 'uuid/v1'
 // import the component
 import ContentLoader, { Rect } from 'react-content-loader'
 
@@ -9,11 +10,11 @@ import ListItem from './list-item'
 const LOADER_COUNT = 5
 
 const Loader = () => (
-  <ContentLoader height={70} speed={5} primaryColor={'#f3eaea'} secondaryColor={'#999'}>
-    <Rect x={0} y={0} height={50} width={50} />
-    <Rect x={55} y={0} height={10} radius={5} width={300} />
-    <Rect x={55} y={20} height={10} radius={5} width={300} />
-    <Rect x={55} y={40} height={10} radius={5} width={300} />
+  <ContentLoader height={70} speed={1} primaryColor={'#f3eaea'} secondaryColor={'#999'}>
+    <Rect x={0} y={0} height={50} width={50} radius={5} />
+    <Rect x={55} y={0} height={10} radius={5} width={345} />
+    <Rect x={55} y={20} height={10} radius={5} width={345} />
+    <Rect x={55} y={40} height={10} radius={5} width={345} />
   </ContentLoader>
 )
 
@@ -51,7 +52,7 @@ class List extends React.Component {
          this.props.items.map(
           item => <ListItem key={item.get('_id')} item={item} />)}
 
-        {this.props.message === 'loading' && Array(LOADER_COUNT).fill(null).map(() => <Loader />) }
+        {this.props.message === 'loading' && Array(LOADER_COUNT).fill(null).map(() => <Loader key={uuid()} />) }
 
         {(this.props.message === 'failure' ||
           (this.props.message === 'success' && this.props.items.size === 0)) &&

@@ -20,7 +20,7 @@ import {
 const App = () =>
   (
     <div>
-      <div className="main-app" style={{ paddingTop: 54, backgroundColor: '#f1f1f1' }}>
+      <div className="main-app" style={{ paddingTop: 54 }}>
         <Helmet titleTemplate={`%s | ${APP_NAME}`} defaultTitle={APP_NAME} />
         <Nav />
         <Switch>

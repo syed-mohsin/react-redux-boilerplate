@@ -24,7 +24,7 @@ const QuotesPage = () => (
     />
 
     <QuoteFilterBar />
-    <div className="container">
+    <div className="container-fluid">
       <div className="row">
         <div className="col-xs-0 col-lg-2" />
         <div className="col-xs-12 col-lg-8">

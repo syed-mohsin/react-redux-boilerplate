@@ -9,8 +9,8 @@ import { getQuotesAsync, quotesClear } from '../action/quotes'
 import { orgNamesAsync } from '../action/organizations'
 
 const mapStateToProps = (state, ownProps) => ({
-  items: state.quotes.get('quotes'),
-  count: state.quotes.get('count'),
+  items: state.quotes.get('quotes') || [],
+  count: state.quotes.get('count') || 0,
   message: state.quotes.get('message'),
   query: queryString.parse(ownProps.location.search),
 })

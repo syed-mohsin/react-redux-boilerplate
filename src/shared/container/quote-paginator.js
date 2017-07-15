@@ -19,7 +19,7 @@ const pageChangeHandler = (history, location) => (page) => {
 
 const mapStateToProps = (state, ownProps) => ({
   pageCount: state.quotes.get('count') / ITEMS_PER_PAGE,
-  containerClassName: 'pagination',
+  containerClassName: 'pagination flex-wrap',
   pageClassName: 'page-item',
   previousClassName: 'page-item',
   nextClassName: 'page-item',
@@ -27,8 +27,11 @@ const mapStateToProps = (state, ownProps) => ({
   previousLinkClassName: 'page-link',
   nextLinkClassName: 'page-link',
   activeClassName: 'active',
+  marginPagesDisplayed: 1,
+  pageRangeDisplayed: 5,
   onPageChange: pageChangeHandler(ownProps.history, ownProps.location),
   initialPage: parseInt(queryString.parse(ownProps.location.search).page - 1, 10) || undefined,
+  hrefBuilder: () => '#',
 })
 
 export default withRouter(connect(mapStateToProps)(ReactPaginate))

@@ -3,7 +3,6 @@
 import $ from 'jquery'
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { APP_NAME } from '../config'
 import {
   HOME_PAGE_ROUTE,
   QUOTES_PAGE_ROUTE,
@@ -15,11 +14,11 @@ const handleNavLinkClick = () => {
 }
 
 const Nav = () => (
-  <nav className="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+  <nav className="navbar navbar-toggleable-md navbar-inverse fixed-top" style={{ backgroundColor: '#222' }}>
     <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
       <span className="navbar-toggler-icon" />
     </button>
-    <Link to={HOME_PAGE_ROUTE} className="navbar-brand">{APP_NAME}</Link>
+    <Link to={HOME_PAGE_ROUTE} className="navbar-brand"><img className="logo" src="https://www.braquet.io/modules/core/client/img/brand/logo.png" style={{ width: '125px' }} alt="" /></Link>
     <div className="js-navbar-collapse collapse navbar-collapse">
       <ul className="navbar-nav mr-auto">
         {[

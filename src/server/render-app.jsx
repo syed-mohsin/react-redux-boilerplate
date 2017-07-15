@@ -36,6 +36,7 @@ const renderApp = (location: string, plainPartialState: ?Object, existingStore: 
         ${head.title}
         ${head.meta}
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
           html, body {
             height: 100%;
