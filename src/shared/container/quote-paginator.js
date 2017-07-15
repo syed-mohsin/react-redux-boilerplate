@@ -30,7 +30,7 @@ const mapStateToProps = (state, ownProps) => ({
   marginPagesDisplayed: 1,
   pageRangeDisplayed: 5,
   onPageChange: pageChangeHandler(ownProps.history, ownProps.location),
-  initialPage: parseInt(queryString.parse(ownProps.location.search).page - 1, 10) || undefined,
+  forcePage: parseInt(queryString.parse(ownProps.location.search).page - 1, 10) || 0,
   hrefBuilder: () => '#',
 })
 
