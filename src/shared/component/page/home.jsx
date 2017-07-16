@@ -34,10 +34,10 @@ const styles = {
     fontSize: '18px',
   },
   homeContainer: {
-    composes: 'pt-5 m-1',
+    composes: 'pt-5',
     maxWidth: '462px',
     '@media (min-width: 768px)': {
-      paddingTop: '125px',
+      paddingTop: '125px !important',
       marginLeft: '100px',
     },
   },
