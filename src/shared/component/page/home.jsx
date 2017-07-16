@@ -10,49 +10,41 @@ import { STATIC_PATH, APP_NAME } from '../../config'
 const styles = {
   homeBackground: {
     background: `url("${STATIC_PATH}/img/home-background.jpg")`,
-    'background-size': 'cover',
+    backgroundSize: 'cover',
   },
   homeBackgroundShade: {
-    'background-color': 'rgba(0,0,0,0.3)',
+    backgroundColor: 'rgba(0,0,0,0.3)',
     height: '100vh',
   },
   homeDescription: {
-    'line-height': '48px',
-    'font-weight': '700',
+    composes: 'mb-5',
+    lineHeight: '48px',
+    fontWeight: '700',
     color: 'white',
-    'font-size': '36pt',
-    position: 'relative',
-    top: '-39px',
+    fontSize: '36pt',
+    '@media (max-width: 768px)': {
+      lineHeight: '34px',
+      fontSize: '20pt',
+    },
   },
   homeSubDescription: {
-    'text-align': 'left',
+    textAlign: 'left',
     color: 'white',
-    'margin-bottom': '20px',
-    'font-size': '18px',
+    marginBottom: '20px',
+    fontSize: '18px',
   },
   homeContainer: {
-    composes: ['container'],
-    top: '10%',
-    right: '15%',
-    'max-width': '462px',
+    composes: 'pt-5',
+    maxWidth: '462px',
+    '@media (min-width: 768px)': {
+      paddingTop: '125px',
+      marginLeft: '100px',
+    },
   },
   homeSubmitButton: {
-    composes: ['btn'],
+    composes: 'btn w-100 mt-2 mb-1',
     background: '#4CAF50',
     color: 'white',
-    width: '100%',
-    'margin-top': '5px',
-    'margin-bottom': '10px',
-  },
-  select: {
-    composes: ['form-control'],
-    width: '50%',
-  },
-  pullLeft: {
-    float: 'left !important',
-  },
-  pullRight: {
-    float: 'right !important',
   },
 }
 
@@ -66,44 +58,36 @@ const BraquetHomePage = ({ classes }: { classes: Object }) => (
     />
     <div className={classes.homeBackground}>
       <div className={classes.homeBackgroundShade}>
-        <div className={classes.homeContainer}>
+        <div className={classNames({
+          [classes.homeContainer]: true,
+          container: true,
+        })}
+        >
           <h1 className={classes.homeDescription}>
             Lookup quotes from solar module manufacturers and resellers
           </h1>
-          <form action="/quotes" className="ng-pristine no-background no-padding no-margin signin">
+          <form action="/quotes">
             <h4 className={classes.homeSubDescription}>
               Make sure your company is receiving competitive quotes from your suppliers.
             </h4>
-            <select
-              name="panelType"
-              id="panelType"
-              className={classNames({
-                [classes.select]: true,
-                [classes.pullRight]: true,
-              })}
-            >
-              <option value="">Type of Module</option>
-              <option value="Mono">Monocrystalline</option>
-              <option value="Poly">Polycrystalline</option>
-              <option value="CIGS">CIGS</option>
-              <option value="CdTe">CdTe</option>
-              <option value="all">All</option>
-            </select>
+            <div className="selectContainer d-flex justify-content-between">
+              <select name="panelType" className="custom-select w-50">
+                <option value="">Type of Module</option>
+                <option value="Mono">Monocrystalline</option>
+                <option value="Poly">Polycrystalline</option>
+                <option value="CIGS">CIGS</option>
+                <option value="CdTe">CdTe</option>
+                <option value="all">All</option>
+              </select>
 
-            <select
-              name="quantity"
-              id="quantity"
-              className={classNames({
-                [classes.select]: true,
-                [classes.pullRight]: true,
-              })}
-            >
-              <option value="">Project Size</option>
-              <option value="0kW-100kW">0kW-100kW</option>
-              <option value="101kW-500kW">101kW-500kW</option>
-              <option value="501kW-1MW">501kW-1MW</option>
-              <option value=">1MW">{'>1MW'}</option>
-            </select>
+              <select name="quantity" className="custom-select w-50">
+                <option value="">Project Size</option>
+                <option value="0kW-100kW">0kW-100kW</option>
+                <option value="101kW-500kW">101kW-500kW</option>
+                <option value="501kW-1MW">501kW-1MW</option>
+                <option value=">1MW">{'>1MW'}</option>
+              </select>
+            </div>
 
             <button type="submit" className={classes.homeSubmitButton}>Find quotes</button>
           </form>
