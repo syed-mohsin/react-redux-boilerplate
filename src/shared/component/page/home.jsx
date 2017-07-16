@@ -52,7 +52,7 @@ const BraquetHomePage = ({ classes }: { classes: Object }) => (
   <div>
     <Helmet
       meta={[
-        { name: 'description', content: 'Search for qualified solar hardware suppliers' },
+        { name: 'description', content: 'Braquet allows you to search through quotes from hundreds of solar module suppliers' },
         { property: 'og:title', content: APP_NAME },
       ]}
     />
