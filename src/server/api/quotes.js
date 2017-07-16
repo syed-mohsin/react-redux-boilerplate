@@ -11,9 +11,9 @@ export default (app: Object) => {
     const queryObj = {}
     const sortObj = {}
 
-    if (req.query.panelType) queryObj.panelType = req.query.panelType
+    // build query for quantity and paneltype filters
     if (req.query.quantity && req.query.quantity !== 'all') queryObj.quantity = req.query.quantity
-    if (req.query.panelType) queryObj.panelType = req.query.panelType
+    if (req.query.panelType && req.query.panelType !== 'all') queryObj.panelType = req.query.panelType
 
     // build query for search using regular expression
     // escape passed in string

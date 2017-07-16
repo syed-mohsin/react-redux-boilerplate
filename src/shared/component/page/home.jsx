@@ -86,6 +86,7 @@ const BraquetHomePage = ({ classes }: { classes: Object }) => (
                 <option value="101kW-500kW">101kW-500kW</option>
                 <option value="501kW-1MW">501kW-1MW</option>
                 <option value=">1MW">{'>1MW'}</option>
+                <option value="all">All</option>
               </select>
             </div>
 
