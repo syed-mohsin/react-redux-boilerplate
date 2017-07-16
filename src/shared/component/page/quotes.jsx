@@ -11,14 +11,14 @@ import QuoteList from '../../container/quote-list'
 import QuotePaginator from '../../container/quote-paginator'
 
 const styles = {}
-const title = 'Quotes'
+const title = 'Solar Module Quotes'
 
 const QuotesPage = () => (
   <div>
     <Helmet
       title={title}
       meta={[
-        { name: 'description', content: 'See all dem quotes' },
+        { name: 'description', content: 'Braquet allows you to search through quotes from hundreds of solar module suppliers' },
         { property: 'og:title', content: title },
       ]}
     />
