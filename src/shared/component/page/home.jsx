@@ -34,7 +34,7 @@ const styles = {
     fontSize: '18px',
   },
   homeContainer: {
-    composes: 'pt-5',
+    composes: 'pt-5 m-1',
     maxWidth: '462px',
     '@media (min-width: 768px)': {
       paddingTop: '125px',
