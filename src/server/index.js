@@ -2,7 +2,6 @@
 
 import express from 'express'
 import { Server } from 'http'
-import socketIO from 'socket.io'
 import mongoose from 'mongoose'
 
 import routing from './routing'
@@ -10,7 +9,6 @@ import apiRouting from './api/routes'
 import loadModels from './models'
 import { WEB_PORT, STATIC_PATH, MONGODB_URI } from '../shared/config'
 import { isProd } from '../shared/util'
-import setUpSocket from './socket'
 
 const app = express()
 
@@ -21,9 +19,8 @@ loadModels()
 
 // flow-disable-next-line
 const http = Server(app)
-const io = socketIO(http)
-setUpSocket(io)
 
+// set up middleware to use gzipped js files
 app.get('*.js', (req, res, next) => {
   req.url = `${req.url}.gz`
   res.set('Content-Encoding', 'gzip')

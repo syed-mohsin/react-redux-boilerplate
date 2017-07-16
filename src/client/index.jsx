@@ -20,8 +20,6 @@ import organizationsReducer from '../shared/reducer/organizations'
 import { APP_CONTAINER_SELECTOR, JSS_SSR_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/util'
 
-import setUpSocket from './socket'
-
 // load jquery, tether, and bootstrap's JS code
 window.jQuery = $
 window.Tether = Tether
@@ -76,6 +74,3 @@ if (module.hot) {
 const jssServerSide = document.querySelector(JSS_SSR_SELECTOR)
 // flow-disable-next-line
 jssServerSide.parentNode.removeChild(jssServerSide)
-
-// socketIO setup
-setUpSocket(store)
