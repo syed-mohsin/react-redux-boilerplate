@@ -71,7 +71,7 @@ const BraquetHomePage = ({ classes }: { classes: Object }) => (
               Make sure your company is receiving competitive quotes from your suppliers.
             </h4>
             <div className="selectContainer d-flex justify-content-between">
-              <select name="panelType" className="custom-select w-50">
+              <select name="panelType" className="custom-select w-50" required>
                 <option value="">Type of Module</option>
                 <option value="Mono">Monocrystalline</option>
                 <option value="Poly">Polycrystalline</option>
@@ -80,7 +80,7 @@ const BraquetHomePage = ({ classes }: { classes: Object }) => (
                 <option value="all">All</option>
               </select>
 
-              <select name="quantity" className="custom-select w-50">
+              <select name="quantity" className="custom-select w-50" required>
                 <option value="">Project Size</option>
                 <option value="0kW-100kW">0kW-100kW</option>
                 <option value="101kW-500kW">101kW-500kW</option>

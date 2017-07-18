@@ -35,7 +35,7 @@ export default (app: Object) => {
     }
 
     const findPromise = Quote.find(queryObj)
-    .populate('organization', 'companyName url logoImageUrl')
+    .populate('organization', 'companyName url logoImageUrl avg_review reviews_length')
     .sort(sortObj)
     .skip((req.query.page - 1 || 0) * 15)
     .limit(15)

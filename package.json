@@ -72,6 +72,7 @@
     "react-hot-loader": "next",
     "react-jss": "^6.1.1",
     "react-paginate": "^4.4.3",
+    "react-rating": "^0.8.0",
     "react-redux": "^5.0.5",
     "react-router": "next",
     "react-router-dom": "next",

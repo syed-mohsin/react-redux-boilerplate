@@ -22,9 +22,11 @@ const Nav = () => (
     </button>
     <Link to={HOME_PAGE_ROUTE} className="navbar-brand" style={{ width: '125px' }}><img className="logo w-100" src={`${STATIC_PATH}/img/logo.png`} alt="" /></Link>
     <div className="js-navbar-collapse collapse navbar-collapse">
-      <ul className="navbar-nav mr-auto">
+      <ul className="navbar-nav ml-auto">
         {[
           { route: QUOTES_PAGE_ROUTE, label: 'Quotes' },
+          { route: '/aboutus', label: 'About Us' },
+          { route: '/faq', label: 'FAQ' },
         ].map(link => (
           <li className="nav-item" key={link.route}>
             <NavLink to={link.route} className="nav-link" activeStyle={{ color: 'white' }} exact onClick={handleNavLinkClick}>{link.label}</NavLink>
