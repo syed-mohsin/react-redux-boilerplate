@@ -1,15 +1,12 @@
 // @flow
 
 import React from 'react'
-import injectSheet from 'react-jss'
-import classNames from 'classnames'
 import Rating from 'react-rating'
 
 import { STATIC_PATH } from '../config'
 
 type Props = {
   item: Object,
-  classes: Object,
 }
 
 const addRef = url => (
@@ -20,25 +17,13 @@ const formatPanelType = panelType => (
   ['Mono', 'Poly'].indexOf(panelType) !== -1 ? `${panelType}crystalline` : panelType
 )
 
-const styles = {
-  mobileListItem: {
-    '@media (max-width: 768px)': {
-      flexDirection: 'column!important',
-    },
-  },
-}
-
-const ListItem = ({ item, classes }: Props) => (
-  <a href={addRef(item.get('organization').get('url'))} target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action mb-3" style={{ boxShadow: '2px 2px 5px #888888', borderRadius: '5px' }}>
-    <div className={classNames({
-      'media d-flex w-100 justify-content-between align-items-center': true,
-      [classes.mobileListItem]: true,
-    })}
-    >
-      <div className="media-left mr-2" style={{ height: '125px' }}>
+const ListItem = ({ item }: Props) => (
+  <div className="list-group-item list-group-item-action mb-3 d-flex justify-content-center mx-auto" style={{ boxShadow: '2px 2px 5px #888888', borderRadius: '5px' }}>
+    <div className="w-100 d-flex justify-content-between align-items-center flex-column flex-md-row">
+      <div className="d-flex flex-column align-items-center justify-content-center mr-2 mb-2" style={{ height: '125px' }}>
         <img className="img-thumbnail" src={item.get('organization').get('logoImageUrl')} alt="" width="125" />
       </div>
-      <div className="media-body">
+      <div className="">
         <div className="d-flex w-100 justify-content-between">
           <h5 className="mb-1">
             {`${item.get('stcPower')} W ${item.get('manufacturer')} ${formatPanelType(item.get('panelType'))} Solar Module`}
@@ -74,12 +59,12 @@ const ListItem = ({ item, classes }: Props) => (
           </div>
         </div>
       </div>
-      <div className="media-right d-flex flex-column justify-content-center ml-2" style={{ height: '125px' }}>
+      <div className="d-flex flex-column align-items-center justify-content-center ml-2" style={{ height: '125px' }}>
         <h6>{`$${Number(item.get('price') / 100).toFixed(3)} per watt`}</h6>
-        <button className="btn" style={{ backgroundColor: '#222', color: '#fff' }}>Contact Seller</button>
+        <a role="button" href={addRef(item.get('organization').get('url'))} target="_blank" rel="noopener noreferrer" className="btn" style={{ backgroundColor: '#222', color: '#fff' }}>Contact Seller</a>
       </div>
     </div>
-  </a>
+  </div>
 )
 
-export default injectSheet(styles)(ListItem)
+export default ListItem
