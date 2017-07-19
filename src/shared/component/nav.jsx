@@ -25,7 +25,7 @@ const Nav = () => (
       <ul className="navbar-nav ml-auto">
         {[
           { route: QUOTES_PAGE_ROUTE, label: 'Quotes' },
-          { route: '/aboutus', label: 'About Us' },
+          { route: '/team', label: 'About Us' },
           { route: '/faq', label: 'FAQ' },
         ].map(link => (
           <li className="nav-item" key={link.route}>

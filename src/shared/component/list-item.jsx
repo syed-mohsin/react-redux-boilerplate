@@ -18,9 +18,9 @@ const formatPanelType = panelType => (
 )
 
 const ListItem = ({ item }: Props) => (
-  <div className="list-group-item list-group-item-action mb-3 d-flex justify-content-center mx-auto" style={{ boxShadow: '2px 2px 5px #888888', borderRadius: '5px' }}>
+  <div className="list-group-item mb-3 d-flex justify-content-center mx-auto w-100" style={{ boxShadow: '2px 2px 5px #888888', borderRadius: '5px' }}>
     <div className="w-100 d-flex justify-content-between align-items-center flex-column flex-md-row">
-      <div className="mr-4 h-100">
+      <div className="mr-3 mb-2 h-100">
         <img src={item.get('organization').get('logoImageUrl')} alt="" style={{ width: '125px' }} />
       </div>
       <div className="w-100">
@@ -59,7 +59,7 @@ const ListItem = ({ item }: Props) => (
           </div>
         </div>
       </div>
-      <div className="d-flex flex-column align-items-center justify-content-center ml-2" style={{ height: '125px' }}>
+      <div className="d-flex flex-column align-items-center justify-content-center ml-3" style={{ height: '125px' }}>
         <h6>{`$${Number(item.get('price') / 100).toFixed(3)} per watt`}</h6>
         <a role="button" href={addRef(item.get('organization').get('url'))} target="_blank" rel="noopener noreferrer" className="btn" style={{ backgroundColor: '#222', color: '#fff' }}>Contact Seller</a>
       </div>
