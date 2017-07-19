@@ -9,7 +9,7 @@ const FaqPage = () => (
       <section className="list-view">
         <div className="content no-wrap title-content mb-4">
           <h4>Is Braquet a reseller site?</h4>
-          <div className="bio">
+          <div>
             <p>
               No. We do not take a fee or commission from manufacturers or resellers
               and you will be in touch with the supplier directly.  We just provide the
@@ -22,7 +22,7 @@ const FaqPage = () => (
       <section className="list-view">
         <div className="content no-wrap title-content mb-4">
           <h4>How are reviews and quotes moderated on Braquet?</h4>
-          <div className="bio">
+          <div>
             <p>
               We do not alter or edit content that are submitted by our users. Only users
               are able to edit their content. Manufacturers and resellers do not have the
@@ -35,7 +35,7 @@ const FaqPage = () => (
       <section className="list-view">
         <div className="content no-wrap title-content mb-4">
           <h4>Can manufacturers and resellers review themselves?</h4>
-          <div className="bio">
+          <div>
             <p>
               We have a user verification process and do not allow manufacturers or resellers
               to submit reviews.
@@ -46,7 +46,7 @@ const FaqPage = () => (
       <section className="list-view">
         <div className="content no-wrap title-content mb-4">
           <h4>Can companies edit or remove reviews about them?</h4>
-          <div className="bio">
+          <div>
             <p>
               We do not allow manufacturers or resellers to remove reviews.
             </p>
@@ -56,7 +56,7 @@ const FaqPage = () => (
       <section className="list-view">
         <div className="content no-wrap title-content mb-4">
           <h4>Can anyone submit reviews?</h4>
-          <div className="bio">
+          <div>
             <p>
               We have a user verification process to ensure that the community can
               benefit from the users’ contributions.
@@ -67,7 +67,7 @@ const FaqPage = () => (
       <section className="list-view">
         <div className="content no-wrap title-content mb-4">
           <h4>How are manufacturers and resellers ranked in the search?</h4>
-          <div className="bio">
+          <div>
             <p>
               The search result is based on our proprietary algorithm that takes reviews,
               quotes and other factors into account.
@@ -78,7 +78,7 @@ const FaqPage = () => (
       <section className="list-view">
         <div className="content no-wrap title-content mb-4">
           <h4>Can manufacturers ask customers to write reviews?</h4>
-          <div className="bio">
+          <div>
             <p>
               Yes, we encourage manufacturers to ask their customers to write reviews
               regarding customer service, product quality and other aspects of the business.
