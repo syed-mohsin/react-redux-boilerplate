@@ -45,15 +45,15 @@ const ListItem = ({ item }: Props) => (
           </span>
         </div>
         <div className="row mx-auto d-flex justify-content-between">
-          <div className="d-flex flex-column align-items-center mb-1 col-xs-12 col-md-4 card">
+          <div className="d-flex flex-column align-items-center mb-1 col-xs-12 col-md-4 card" style={{ whiteSpace: 'nowrap' }}>
             <small>{`${item.get('stcPower')}`}</small>
             <small>Module Wattage</small>
           </div>
-          <div className="d-flex flex-column align-items-center mb-1 col-xs-12 col-md-4 card">
+          <div className="d-flex flex-column align-items-center mb-1 col-xs-12 col-md-4 card" style={{ whiteSpace: 'nowrap' }}>
             <small>{formatPanelType(item.get('panelType'))}</small>
             <small>Technology</small>
           </div>
-          <div className="d-flex flex-column align-items-center mb-1 col-xs-12 col-md-4 card">
+          <div className="d-flex flex-column align-items-center mb-1 col-xs-12 col-md-4 card" style={{ whiteSpace: 'nowrap' }}>
             <small>{`${item.get('quantity')}`}</small>
             <small>Project Size</small>
           </div>

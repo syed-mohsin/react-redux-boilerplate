@@ -6,6 +6,12 @@ import initStore from './init-store'
 
 export const homePage = () => null
 
+export const FaqPage = () => null
+
+export const TeamPage = () => null
+
+export const PrivacyPolicyPage = () => null
+
 export const quotesPage = (query: Object) => {
   const store = initStore()
   return new Promise((resolve, reject) => {

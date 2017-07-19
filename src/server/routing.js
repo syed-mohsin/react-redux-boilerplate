@@ -3,10 +3,16 @@
 import {
   homePage,
   quotesPage,
+  FaqPage,
+  TeamPage,
+  PrivacyPolicyPage,
 } from './controller'
 
 import {
   HOME_PAGE_ROUTE,
+  FAQ_PAGE_ROUTE,
+  TEAM_PAGE_ROUTE,
+  PRIVACY_POLICY_PAGE_ROUTE,
   QUOTES_PAGE_ROUTE,
 } from '../shared/routes'
 
@@ -15,6 +21,18 @@ import renderApp from './render-app'
 export default (app: Object) => {
   app.get(HOME_PAGE_ROUTE, (req, res) => {
     res.send(renderApp(req.url, homePage()))
+  })
+
+  app.get(FAQ_PAGE_ROUTE, (req, res) => {
+    res.send(renderApp(req.url, FaqPage()))
+  })
+
+  app.get(TEAM_PAGE_ROUTE, (req, res) => {
+    res.send(renderApp(req.url, TeamPage()))
+  })
+
+  app.get(PRIVACY_POLICY_PAGE_ROUTE, (req, res) => {
+    res.send(renderApp(req.url, PrivacyPolicyPage()))
   })
 
   app.get(QUOTES_PAGE_ROUTE, (req, res) => {

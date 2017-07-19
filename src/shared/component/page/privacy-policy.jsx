@@ -77,7 +77,7 @@ const PrivacyPolicyPage = () => (
     </p>
 
     {items.map(item => (
-      <section className="list-view">
+      <section key={item.header} className="list-view">
         <div className="content no-wrap title-content mb-4">
           <h4>{item.header}</h4>
           <div>

@@ -5,7 +5,6 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import {
   HOME_PAGE_ROUTE,
-  QUOTES_PAGE_ROUTE,
 } from '../routes'
 
 import { STATIC_PATH } from '../config'
@@ -24,9 +23,8 @@ const Nav = () => (
     <div className="js-navbar-collapse collapse navbar-collapse">
       <ul className="navbar-nav ml-auto">
         {[
-          { route: QUOTES_PAGE_ROUTE, label: 'Quotes' },
-          { route: '/team', label: 'About Us' },
           { route: '/faq', label: 'FAQ' },
+          { route: '/team', label: 'About Us' },
         ].map(link => (
           <li className="nav-item" key={link.route}>
             <NavLink to={link.route} className="nav-link" activeStyle={{ color: 'white' }} exact onClick={handleNavLinkClick}>{link.label}</NavLink>
