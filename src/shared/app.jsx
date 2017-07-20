@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import { Switch } from 'react-router'
+import { Switch, Redirect } from 'react-router'
 import { Route } from 'react-router-dom'
 import Helmet from 'react-helmet'
 
@@ -13,7 +13,7 @@ import QuotesPage from './component/page/quotes'
 import FaqPage from './component/page/faq'
 import TeamPage from './component/page/team'
 import PrivacyPolicyPage from './component/page/privacy-policy'
-import NotFoundPage from './component/page/not-found'
+// import NotFoundPage from './component/page/not-found'
 
 import {
   HOME_PAGE_ROUTE,
@@ -35,7 +35,8 @@ const App = () =>
           <Route path={FAQ_PAGE_ROUTE} component={FaqPage} />
           <Route path={TEAM_PAGE_ROUTE} component={TeamPage} />
           <Route path={PRIVACY_POLICY_PAGE_ROUTE} component={PrivacyPolicyPage} />
-          <Route component={NotFoundPage} />
+          {/* <Route component={NotFoundPage} /> */}
+          <Redirect to="/" />
         </Switch>
       </div>
       <Footer />
