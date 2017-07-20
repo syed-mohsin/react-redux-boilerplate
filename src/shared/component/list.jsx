@@ -7,8 +7,6 @@ import $ from 'jquery'
 import Loader from './loader'
 import ListItem from './list-item'
 
-const LOADER_COUNT = 5
-
 class List extends React.Component {
   componentDidMount() {
     if (!this.props.message) {
@@ -44,10 +42,9 @@ class List extends React.Component {
     return (
       <div className="list-group" style={{ marginBottom: 20 }}>
         {this.props.message === 'success' && this.props.items.size !== 0 &&
-         this.props.items.map(
-          item => <ListItem key={item.get('_id')} item={item} />)}
+         this.props.items.map(item => <ListItem key={item.get('_id')} item={item} />)}
 
-        {this.props.message === 'loading' && Array(LOADER_COUNT).fill(null).map(() => <Loader key={uuid()} />) }
+        {this.props.message === 'loading' && <Loader key={uuid()} /> }
 
         {(this.props.message === 'failure' ||
           (this.props.message === 'success' && this.props.items.size === 0)) &&
