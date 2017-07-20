@@ -19,7 +19,7 @@ const ButtonGroup = (props: Object) => (
       <option value="recent">Most Recent</option>
       <option value="price-low">Price Low to High</option>
       <option value="price-high">Price High to Low</option>
-      <option value="wattage">Wattage</option>
+      <option value="wattage">Wattage High to Low</option>
     </select>
   </div>
 )

@@ -45,6 +45,9 @@ const styles = {
     composes: 'btn w-100 mt-2 mb-1',
     background: '#4CAF50',
     color: 'white',
+    '&:hover': {
+      cursor: 'pointer',
+    },
   },
 }
 
@@ -86,7 +89,6 @@ const BraquetHomePage = ({ classes }: { classes: Object }) => (
                 <option value="101kW-500kW">101kW-500kW</option>
                 <option value="501kW-1MW">501kW-1MW</option>
                 <option value=">1MW">{'>1MW'}</option>
-                <option value="all">All</option>
               </select>
             </div>
 

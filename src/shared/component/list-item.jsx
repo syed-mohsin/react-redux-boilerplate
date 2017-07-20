@@ -29,10 +29,10 @@ const ListItem = ({ item }: Props) => (
             {`${item.get('stcPower')} W ${item.get('manufacturer')} ${formatPanelType(item.get('panelType'))} Solar Module`}
           </h5>
         </div>
-        <p className="">
+        <div>
           {`by ${item.get('organization').get('companyName')}`}
-        </p>
-        <div className="mb-2">
+        </div>
+        <div className="mb-3">
           <span className="text-center">
             <Rating
               placeholderRate={item.get('organization').get('avg_review')}
@@ -41,27 +41,27 @@ const ListItem = ({ item }: Props) => (
               full={<img src={`${STATIC_PATH}/stars/yellow-star.jpg`} alt="" className="icon" width="15" />}
               readonly
             />
-            {` ${item.get('organization').get('reviews_length')}`} Reviews
+            <span style={{ fontSize: '14px' }}>{` (${item.get('organization').get('reviews_length')})`} Reviews</span>
           </span>
         </div>
         <div className="row mx-auto d-flex justify-content-between">
-          <div className="d-flex flex-column align-items-center mb-1 col-xs-12 col-md-4 card" style={{ whiteSpace: 'nowrap' }}>
-            <small>{`${item.get('stcPower')}`}</small>
+          <div className="d-flex flex-column align-items-center mb-1 col-xs-12 col-md-4 p-2" style={{ whiteSpace: 'nowrap' }}>
+            <small><b>{`${item.get('stcPower')}`}</b></small>
             <small>Module Wattage</small>
           </div>
-          <div className="d-flex flex-column align-items-center mb-1 col-xs-12 col-md-4 card" style={{ whiteSpace: 'nowrap' }}>
-            <small>{formatPanelType(item.get('panelType'))}</small>
+          <div className="d-flex flex-column align-items-center mb-1 col-xs-12 col-md-4 p-2" style={{ whiteSpace: 'nowrap' }}>
+            <small><b>{formatPanelType(item.get('panelType'))}</b></small>
             <small>Technology</small>
           </div>
-          <div className="d-flex flex-column align-items-center mb-1 col-xs-12 col-md-4 card" style={{ whiteSpace: 'nowrap' }}>
-            <small>{`${item.get('quantity')}`}</small>
+          <div className="d-flex flex-column align-items-center mb-1 col-xs-12 col-md-4 p-2" style={{ whiteSpace: 'nowrap' }}>
+            <small><b>{`${item.get('quantity')}`}</b></small>
             <small>Project Size</small>
           </div>
         </div>
       </div>
       <div className="d-flex flex-column align-items-center justify-content-center ml-3" style={{ height: '125px' }}>
-        <h6>{`$${Number(item.get('price') / 100).toFixed(3)} per watt`}</h6>
-        <a role="button" href={addRef(item.get('organization').get('url'))} target="_blank" rel="noopener noreferrer" className="btn" style={{ backgroundColor: '#222', color: '#fff' }}>Contact Seller</a>
+        <h6><big style={{ whiteSpace: 'nowrap' }}>{`$${Number(item.get('price') / 100).toFixed(3)} per watt`}</big></h6>
+        <a role="button" href={addRef(item.get('organization').get('url'))} target="_blank" rel="noopener noreferrer" className="btn" style={{ backgroundColor: '#222', color: '#fff', padding: '9px 22px', fontSize: '14px', borderRadius: '0' }}>Contact Seller</a>
       </div>
     </div>
   </div>

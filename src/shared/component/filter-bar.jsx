@@ -61,8 +61,8 @@ class FilterBar extends React.Component {
   render() {
     return (
       <div className="container-fluid d-flex justify-content-center mb-2" style={{ border: '1px solid #cecece' }}>
-        <form className="row mb-2 mt-4">
-          <div className="col-md-4 col-xs-12">
+        <form className="row mb-2 mt-4 w-100 d-flex justify-content-center">
+          <div className="col-md-3 col-xs-12">
             <label className="mr-sm-2 sr-only" htmlFor="brandSearch">Search for a Brand</label>
             {this.props.orgs && <Typeahead
               onChange={this.onBrandChange}
@@ -95,24 +95,25 @@ class FilterBar extends React.Component {
               <option value="Poly">Polycrystalline</option>
               <option value="CIGS">CIGS</option>
               <option value="CdTe">CdTe</option>
+              <option value="all">All</option>
             </select>
           </div>
 
           <div className="col-md-3 col-xs-12">
             <label className="mr-sm-2 sr-only" htmlFor="quantity">Project Size</label>
-            <select className="custom-select mb-2 w-100" name="quantity" value={this.state.quantity} onChange={this.onQuantityChange}>
+            <select className="custom-select mb-2 w-100" name="quantity" value={this.state.quantity || '0kW-100kW'} onChange={this.onQuantityChange}>
               <option value="">Project Size</option>
               <option value="0kW-100kW">0kW-100kW</option>
               <option value="101kW-500kW">101kW-500kW</option>
               <option value="501kW-1MW">501kW-1MW</option>
               <option value=">1MW">{'>1MW'}</option>
-              <option value="all">All</option>
             </select>
           </div>
 
           <div className="col-md-2 col-xs-12">
             <button type="submit" className="btn" style={{ backgroundColor: '#222', color: '#fff' }}>Find Quotes</button>
           </div>
+
         </form>
       </div>
     )

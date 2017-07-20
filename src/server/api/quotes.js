@@ -12,7 +12,12 @@ export default (app: Object) => {
     const sortObj = {}
 
     // build query for quantity and paneltype filters
-    if (req.query.quantity && req.query.quantity !== 'all') queryObj.quantity = req.query.quantity
+    if (req.query.quantity) {
+      queryObj.quantity = req.query.quantity
+    } else {
+      queryObj.quantity = '0kW-100kW'
+    }
+
     if (req.query.panelType && req.query.panelType !== 'all') queryObj.panelType = req.query.panelType
 
     // build query for search using regular expression
