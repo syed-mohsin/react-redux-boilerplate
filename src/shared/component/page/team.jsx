@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react'
+import Helmet from 'react-helmet'
 
 import {
   STATIC_PATH,
@@ -48,8 +49,16 @@ const profiles = [
   },
 ]
 
+const title = 'Team'
 const TeamPage = () => (
   <div className="container-fluid mt-5 mb-5 ml-md-5 mr-md-5 ml-0 mr-0 pb-4">
+    <Helmet
+      title={title}
+      meta={[
+        { name: 'description', content: 'Meet the team behind Braquet' },
+        { property: 'og:title', content: title },
+      ]}
+    />
     <ul className="list-group">
       {profiles.map(profile => (
         <li key={profile.name} className="media mb-3 p-2 d-flex flex-column flex-sm-row" style={{ borderStyle: 'solid', borderWidth: '1px', borderColor: 'rgb(211, 211, 211)' }}>
