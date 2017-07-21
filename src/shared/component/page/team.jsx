@@ -62,13 +62,13 @@ const TeamPage = () => (
     <ul className="list-group">
       {profiles.map(profile => (
         <li key={profile.name} className="media mb-3 p-2 d-flex flex-column flex-sm-row" style={{ borderStyle: 'solid', borderWidth: '1px', borderColor: 'rgb(211, 211, 211)' }}>
-          <img className="d-flex mb-2" src={profile.imageUrl} alt={`${profile.name} Profile`} width="175" />
+          <img className="d-flex mb-2 mb-sm-0" src={profile.imageUrl} alt={`${profile.name} Profile`} width="175" />
           <div className="ml-2 media-body">
             <h5>{profile.name}</h5>
             <p>{profile.title}</p>
-            <p>
+            <div>
               {profile.bio}
-            </p>
+            </div>
           </div>
         </li>
       ))}
