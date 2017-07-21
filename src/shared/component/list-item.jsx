@@ -21,7 +21,7 @@ const ListItem = ({ item }: Props) => (
   <div className="list-group-item mb-3 d-flex justify-content-center mx-auto w-100" style={{ boxShadow: '2px 2px 5px #888888', borderRadius: '5px' }}>
     <div className="w-100 d-flex justify-content-between align-items-center flex-column flex-md-row">
       <div className="mr-md-3 mb-2">
-        <img src={item.get('organization').get('logoImageUrl')} alt="" style={{ width: '125px' }} />
+        <img src={item.get('organization').get('logoImageUrl')} alt="" style={{ width: '100px' }} />
       </div>
       <div className="w-100">
         <div className="d-flex w-100 justify-content-between">

@@ -110,10 +110,7 @@ class FilterBar extends React.Component {
             </select>
           </div>
 
-          <div className="col-md-2 col-xs-12">
-            <button type="submit" className="btn" style={{ backgroundColor: '#222', color: '#fff' }}>Find Quotes</button>
-          </div>
-
+          <button type="submit" className="btn ml-3 mb-2 text-left" style={{ backgroundColor: '#222', color: '#fff' }}>Find Quotes</button>
         </form>
       </div>
     )

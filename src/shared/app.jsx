@@ -15,6 +15,8 @@ import TeamPage from './component/page/team'
 import PrivacyPolicyPage from './component/page/privacy-policy'
 // import NotFoundPage from './component/page/not-found'
 
+import ScrollToTop from './component/scroll-to-top'
+
 import {
   HOME_PAGE_ROUTE,
   FAQ_PAGE_ROUTE,
@@ -29,15 +31,17 @@ const App = () =>
       <div className="main-app" style={{ paddingTop: 54 }}>
         <Helmet titleTemplate={`%s | ${APP_NAME}`} defaultTitle={APP_NAME} />
         <Nav />
-        <Switch>
-          <Route exact path={HOME_PAGE_ROUTE} render={() => <HomePage />} />
-          <Route path={QUOTES_PAGE_ROUTE} component={QuotesPage} />
-          <Route path={FAQ_PAGE_ROUTE} component={FaqPage} />
-          <Route path={TEAM_PAGE_ROUTE} component={TeamPage} />
-          <Route path={PRIVACY_POLICY_PAGE_ROUTE} component={PrivacyPolicyPage} />
-          {/* <Route component={NotFoundPage} /> */}
-          <Redirect to="/" />
-        </Switch>
+        <ScrollToTop>
+          <Switch>
+            <Route exact path={HOME_PAGE_ROUTE} render={() => <HomePage />} />
+            <Route path={QUOTES_PAGE_ROUTE} component={QuotesPage} />
+            <Route path={FAQ_PAGE_ROUTE} component={FaqPage} />
+            <Route path={TEAM_PAGE_ROUTE} component={TeamPage} />
+            <Route path={PRIVACY_POLICY_PAGE_ROUTE} component={PrivacyPolicyPage} />
+            {/* <Route component={NotFoundPage} /> */}
+            <Redirect to="/" />
+          </Switch>
+        </ScrollToTop>
       </div>
       <Footer />
     </div>

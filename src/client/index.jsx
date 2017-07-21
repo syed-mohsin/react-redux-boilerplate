@@ -43,9 +43,6 @@ const mergedPreloadedState = {
 const store = createStore(combineReducers(reducers), mergedPreloadedState,
   composeEnhancers(applyMiddleware(thunkMiddleware)))
 
-// eslint-disable-next-line no-console
-console.log('store', store)
-
 const rootEl = document.querySelector(APP_CONTAINER_SELECTOR)
 
 const wrapApp = (AppComponent, reduxStore) =>
