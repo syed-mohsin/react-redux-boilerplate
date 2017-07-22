@@ -15,7 +15,7 @@ type Props = {
 
 const ReviewListItem = ({ item, listItemHandler }: Props) => (
   <div className="list-group-item mb-3 d-flex justify-content-center mx-auto w-100">
-    <div className="d-flex justify-content-between w-100">
+    <div className="d-flex w-100">
       <div className="mr-3">
         <img src={listItemHandler().get('logoImageUrl')} alt="" width="100" />
       </div>
