@@ -1,6 +1,7 @@
 import {
   quotesEndpointRoute,
   orgNamesEndpointRoute,
+  organizationRedirectEndpointRoute,
   reviewsEndpointRoute,
 } from './routes'
 
@@ -20,4 +21,9 @@ test('reviewsEndpointRoute', () => {
   expect(reviewsEndpointRoute()).toBe('/api/reviews/:organizationId')
   expect(reviewsEndpointRoute('https://www.braquet.io')).toBe('https://www.braquet.io/api/reviews/:organizationId')
   expect(reviewsEndpointRoute('https://www.braquet.io', '1234')).toBe('https://www.braquet.io/api/reviews/1234')
+})
+
+test('organizationRedirectEndpointRoute', () => {
+  expect(organizationRedirectEndpointRoute()).toBe('/api/organizations/:organizationId/redirect')
+  expect(organizationRedirectEndpointRoute('1234')).toBe('/api/organizations/1234/redirect')
 })
