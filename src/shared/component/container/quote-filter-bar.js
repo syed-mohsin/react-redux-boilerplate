@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import queryString from 'query-string'
 
-import FilterBar from '../component/filter-bar'
+import FilterBar from '../presentational/filter-bar'
 
 const mapStateToProps = (state, ownProps) => ({
   query: queryString.parse(ownProps.location.search),

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import queryString from 'query-string'
 
-import ButtonGroup from '../component/button-group'
+import ButtonGroup from '../presentational/button-group'
 
 const onChange = (history, location) => (event: Object) => {
   if (!event.target.value) return

@@ -6,8 +6,8 @@ import { Route } from 'react-router-dom'
 import Helmet from 'react-helmet'
 
 import { APP_NAME } from './config'
-import Nav from './component/nav'
-import Footer from './component/footer'
+import Nav from './component/presentational/nav'
+import Footer from './component/presentational/footer'
 import HomePage from './component/page/home'
 import QuotesPage from './component/page/quotes'
 import FaqPage from './component/page/faq'
@@ -15,7 +15,7 @@ import TeamPage from './component/page/team'
 import PrivacyPolicyPage from './component/page/privacy-policy'
 // import NotFoundPage from './component/page/not-found'
 
-import ScrollToTop from './component/scroll-to-top'
+import ScrollToTop from './component/presentational/scroll-to-top'
 
 import {
   HOME_PAGE_ROUTE,

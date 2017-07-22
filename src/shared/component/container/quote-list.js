@@ -4,11 +4,11 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import queryString from 'query-string'
 
-import List from '../component/list'
-import QuoteListItem from '../component/quote-list-item'
-import { getQuotesAsync, quotesClear } from '../action/quotes'
-import { orgNamesAsync } from '../action/organizations'
-import { reviewsSetOrganization } from '../action/reviews'
+import List from '../presentational/list'
+import QuoteListItem from '../presentational/quote-list-item'
+import { getQuotesAsync, quotesClear } from '../../action/quotes'
+import { orgNamesAsync } from '../../action/organizations'
+import { reviewsSetOrganization } from '../../action/reviews'
 
 const mapStateToProps = (state, ownProps) => ({
   items: state.quotes.get('quotes') || [],

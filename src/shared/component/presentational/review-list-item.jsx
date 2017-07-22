@@ -5,7 +5,7 @@ import Rating from 'react-rating'
 
 import {
   STATIC_PATH,
-} from '../config'
+} from '../../config'
 
 
 type Props = {

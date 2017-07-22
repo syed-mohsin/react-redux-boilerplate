@@ -5,9 +5,9 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import {
   HOME_PAGE_ROUTE,
-} from '../routes'
+} from '../../routes'
 
-import { STATIC_PATH } from '../config'
+import { STATIC_PATH } from '../../config'
 
 const handleNavLinkClick = () => {
   $('body').scrollTop(0)

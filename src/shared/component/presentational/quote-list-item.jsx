@@ -3,11 +3,11 @@
 import React from 'react'
 import Rating from 'react-rating'
 
-import { STATIC_PATH } from '../config'
+import { STATIC_PATH } from '../../config'
 
 import {
   organizationRedirectEndpointRoute,
-} from '../routes'
+} from '../../routes'
 
 type Props = {
   item: Object,

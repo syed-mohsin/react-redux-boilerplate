@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom'
 
 import queryString from 'query-string'
 
-import ResultsCount from '../component/results-count'
+import ResultsCount from '../presentational/results-count'
 
 const ITEMS_PER_PAGE = 15
 

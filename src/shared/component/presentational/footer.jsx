@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 
 import {
   PRIVACY_POLICY_PAGE_ROUTE,
-} from '../routes'
+} from '../../routes'
 
-import { APP_NAME } from '../config'
+import { APP_NAME } from '../../config'
 
 const Footer = () =>
   (

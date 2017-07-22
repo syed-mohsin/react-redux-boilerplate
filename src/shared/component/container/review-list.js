@@ -3,12 +3,12 @@
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 
-import List from '../component/list'
-import ReviewListItem from '../component/review-list-item'
+import List from '../presentational/list'
+import ReviewListItem from '../presentational/review-list-item'
 import {
   getReviewsAsync,
   reviewsClear,
-} from '../action/reviews'
+} from '../../action/reviews'
 
 const mapStateToProps = state => ({
   items: state.reviews.get('reviews') || [],

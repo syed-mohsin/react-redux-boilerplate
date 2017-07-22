@@ -6,7 +6,7 @@ import QuoteResultsCount from '../container/quote-results-count'
 
 import {
   QUOTES_PAGE_ROUTE,
-} from '../routes'
+} from '../../routes'
 
 const ButtonGroup = (props: Object) => (
   <div className="input-group md-flex justify-content-between" style={{ marginBottom: 20 }}>
