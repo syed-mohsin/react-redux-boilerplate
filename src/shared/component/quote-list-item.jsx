@@ -5,14 +5,14 @@ import Rating from 'react-rating'
 
 import { STATIC_PATH } from '../config'
 
+import {
+  organizationRedirectEndpointRoute,
+} from '../routes'
+
 type Props = {
   item: Object,
   listItemHandler: Function,
 }
-
-const addRef = url => (
-  url.indexOf('?') !== -1 ? `${url}&ref=braquet.io` : `${url}?ref=braquet.io`
-)
 
 const formatPanelType = panelType => (
   ['Mono', 'Poly'].indexOf(panelType) !== -1 ? `${panelType}crystalline` : panelType
@@ -65,7 +65,16 @@ const QuoteListItem = ({ item, listItemHandler }: Props) => (
       </div>
       <div className="d-flex flex-column align-items-center justify-content-center ml-md-3" style={{ height: '125px' }}>
         <h6><big style={{ whiteSpace: 'nowrap' }}>{`$${Number(item.get('price') / 100).toFixed(3)} per watt`}</big></h6>
-        <a role="button" href={addRef(item.get('organization').get('url'))} target="_blank" rel="noopener noreferrer" className="btn" style={{ backgroundColor: '#222', color: '#fff', padding: '9px 22px', fontSize: '14px', borderRadius: '0' }}>Contact Seller</a>
+        <a
+          role="button"
+          href={organizationRedirectEndpointRoute(item.get('organization').get('_id'))}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn"
+          style={{ backgroundColor: '#222', color: '#fff', padding: '9px 22px', fontSize: '14px', borderRadius: '0' }}
+        >
+          Contact Seller
+        </a>
       </div>
     </div>
   </div>
