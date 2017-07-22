@@ -15,3 +15,7 @@ export const orgNamesEndpointRoute = (domain: ?string) => (
 export const quotesEndpointRoute = (domain: ?string, query: ?Object) => (
   `${domain || ''}/api/quotes${query ? `/?${queryString.stringify(query)}` : ''}`
 )
+
+export const reviewsEndpointRoute = (domain: ?string, organizationId: ?string) => (
+  `${domain || ''}/api/reviews/${organizationId || ':organizationId'}`
+)

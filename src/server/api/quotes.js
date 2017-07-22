@@ -2,12 +2,12 @@
 
 import mongoose from 'mongoose'
 
-const API_QUOTES_ROUTE = '/api/quotes'
+import { quotesEndpointRoute } from '../../shared/routes'
 
 export default (app: Object) => {
   const Quote = mongoose.model('PriceReview')
 
-  app.get(API_QUOTES_ROUTE, (req, res) => {
+  app.get(quotesEndpointRoute(), (req, res) => {
     const queryObj = {}
     const sortObj = {}
 

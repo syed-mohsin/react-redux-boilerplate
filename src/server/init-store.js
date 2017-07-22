@@ -6,6 +6,7 @@ import thunkMiddleware from 'redux-thunk'
 
 import quotesReducer from '../shared/reducer/quotes'
 import organizationsReducer from '../shared/reducer/organizations'
+import reviewsReducer from '../shared/reducer/reviews'
 
 const initStore = (plainPartialState: ?Object) => {
   const preloadedState = plainPartialState ? {} : undefined
@@ -13,6 +14,7 @@ const initStore = (plainPartialState: ?Object) => {
   const reducers = {
     quotes: quotesReducer,
     organizations: organizationsReducer,
+    reviews: reviewsReducer,
   }
 
   if (plainPartialState && plainPartialState.quotes) {

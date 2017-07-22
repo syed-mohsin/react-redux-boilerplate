@@ -22,14 +22,14 @@ test('handle default', () => {
 })
 
 test('handle reset to initial state', () => {
-  quotesState = quotesReducer(quotesState, getQuotesAsyncRequest())
-  expect(quotesState.get('message')).toBe('loading')
-})
-
-test('handle QUOTES_ASYNC_REQUEST', () => {
   quotesState = quotesReducer(quotesState, quotesClear())
   expect(quotesState.get('quotes')).toBe(Immutable.fromJS([]))
   expect(quotesState.get('message')).toBe('')
+})
+
+test('handle QUOTES_ASYNC_REQUEST', () => {
+  quotesState = quotesReducer(quotesState, getQuotesAsyncRequest())
+  expect(quotesState.get('message')).toBe('loading')
 })
 
 test('handle QUOTES_ASYNC_SUCCESS', () => {

@@ -7,6 +7,7 @@ import { STATIC_PATH } from '../config'
 
 type Props = {
   item: Object,
+  listItemHandler: Function,
 }
 
 const addRef = url => (
@@ -17,11 +18,13 @@ const formatPanelType = panelType => (
   ['Mono', 'Poly'].indexOf(panelType) !== -1 ? `${panelType}crystalline` : panelType
 )
 
-const ListItem = ({ item }: Props) => (
+const QuoteListItem = ({ item, listItemHandler }: Props) => (
   <div className="list-group-item mb-3 d-flex justify-content-center mx-auto w-100" style={{ boxShadow: '2px 2px 5px #888888', borderRadius: '5px' }}>
     <div className="w-100 d-flex justify-content-between align-items-center flex-column flex-md-row">
       <div className="mr-md-3 mb-2">
-        <img src={item.get('organization').get('logoImageUrl')} alt="" style={{ width: '100px' }} />
+        <a role="button" tabIndex="-1" data-toggle="modal" data-target=".js-modal" onClick={() => listItemHandler(item.get('organization'))}>
+          <img src={item.get('organization').get('logoImageUrl')} alt="" style={{ width: '100px' }} />
+        </a>
       </div>
       <div className="w-100">
         <div className="d-flex w-100 justify-content-between">
@@ -41,7 +44,8 @@ const ListItem = ({ item }: Props) => (
               full={<img src={`${STATIC_PATH}/stars/yellow-star.jpg`} alt="" className="icon" width="15" />}
               readonly
             />
-            <span style={{ fontSize: '14px' }}>{` (${item.get('organization').get('reviews_length')})`} Reviews</span>
+            {' '}
+            <a href="" data-toggle="modal" data-target=".js-modal" onClick={() => listItemHandler(item.get('organization'))} style={{ fontSize: '14px' }}>{`(${item.get('organization').get('reviews_length')})`} Reviews</a>
           </span>
         </div>
         <div className="row mx-auto d-flex justify-content-between">
@@ -67,4 +71,4 @@ const ListItem = ({ item }: Props) => (
   </div>
 )
 
-export default ListItem
+export default QuoteListItem

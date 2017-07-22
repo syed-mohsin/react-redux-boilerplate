@@ -15,8 +15,11 @@ import $ from 'jquery'
 import Tether from 'tether'
 
 import App from '../shared/app'
+
 import quotesReducer from '../shared/reducer/quotes'
 import organizationsReducer from '../shared/reducer/organizations'
+import reviewsReducer from '../shared/reducer/reviews'
+
 import { APP_CONTAINER_SELECTOR, JSS_SSR_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/util'
 
@@ -33,6 +36,7 @@ const preloadedState = window.__PRELOADED_STATE__
 const reducers = {
   quotes: quotesReducer,
   organizations: organizationsReducer,
+  reviews: reviewsReducer,
 }
 
 const mergedPreloadedState = {
