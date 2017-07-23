@@ -1,9 +1,11 @@
 // @flow
 
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import Helmet from 'react-helmet'
 import injectSheet from 'react-jss'
 import classNames from 'classnames'
+import queryString from 'query-string'
 
 import { STATIC_PATH, APP_NAME } from '../../config'
 
@@ -51,53 +53,77 @@ const styles = {
   },
 }
 
-const BraquetHomePage = ({ classes }: { classes: Object }) => (
-  <div>
-    <Helmet
-      meta={[
-        { name: 'description', content: 'Braquet allows you to search through quotes from hundreds of solar module suppliers' },
-        { property: 'og:title', content: APP_NAME },
-      ]}
-    />
-    <div className={classes.homeBackground}>
-      <div className={classes.homeBackgroundShade}>
-        <div className={classNames({
-          [classes.homeContainer]: true,
-          container: true,
-        })}
-        >
-          <h1 className={classes.homeDescription}>
-            Lookup quotes from solar module manufacturers and resellers
-          </h1>
-          <form action="/quotes">
-            <h4 className={classes.homeSubDescription}>
-              Make sure your company is receiving competitive quotes from your suppliers.
-            </h4>
-            <div className="selectContainer d-flex justify-content-between">
-              <select name="panelType" className="custom-select w-50" required>
-                <option value="">Type of Module</option>
-                <option value="Mono">Monocrystalline</option>
-                <option value="Poly">Polycrystalline</option>
-                <option value="CIGS">CIGS</option>
-                <option value="CdTe">CdTe</option>
-                <option value="all">All</option>
-              </select>
+class BraquetHomePage extends React.Component {
+  props: {
+    classes: Object,
+    history: Object,
+  }
 
-              <select name="quantity" className="custom-select w-50" required>
-                <option value="">Project Size</option>
-                <option value="0kW-100kW">0kW-100kW</option>
-                <option value="101kW-500kW">101kW-500kW</option>
-                <option value="501kW-1MW">501kW-1MW</option>
-                <option value=">1MW">{'>1MW'}</option>
-              </select>
+  panelType: Object
+  quantity: Object
+
+  handleSubmit(e) {
+    e.preventDefault()
+    const query = {
+      panelType: this.panelType.value || '',
+      quantity: this.quantity.value || '',
+    }
+
+    this.props.history.push(`/quotes?${queryString.stringify(query)}`)
+  }
+
+  render() {
+    const classes = this.props.classes
+
+    return (
+      <div>
+        <Helmet
+          meta={[
+            { name: 'description', content: 'Braquet allows you to search through quotes from hundreds of solar module suppliers' },
+            { property: 'og:title', content: APP_NAME },
+          ]}
+        />
+        <div className={classes.homeBackground}>
+          <div className={classes.homeBackgroundShade}>
+            <div className={classNames({
+              [classes.homeContainer]: true,
+              container: true,
+            })}
+            >
+              <h1 className={classes.homeDescription}>
+                Lookup quotes from solar module manufacturers and resellers
+              </h1>
+              <form onSubmit={e => this.handleSubmit(e)}>
+                <h4 className={classes.homeSubDescription}>
+                  Make sure your company is receiving competitive quotes from your suppliers.
+                </h4>
+                <div className="selectContainer d-flex justify-content-between">
+                  <select name="panelType" className="custom-select w-50" ref={(input) => { this.panelType = input }} required>
+                    <option value="">Type of Module</option>
+                    <option value="Mono">Monocrystalline</option>
+                    <option value="Poly">Polycrystalline</option>
+                    <option value="CIGS">CIGS</option>
+                    <option value="CdTe">CdTe</option>
+                    <option value="all">All</option>
+                  </select>
+
+                  <select name="quantity" className="custom-select w-50" ref={(input) => { this.quantity = input }} required>
+                    <option value="">Project Size</option>
+                    <option value="0kW-100kW">0kW-100kW</option>
+                    <option value="101kW-500kW">101kW-500kW</option>
+                    <option value="501kW-1MW">501kW-1MW</option>
+                    <option value=">1MW">{'>1MW'}</option>
+                  </select>
+                </div>
+
+                <button type="submit" className={classes.homeSubmitButton}>Find quotes</button>
+              </form>
             </div>
-
-            <button type="submit" className={classes.homeSubmitButton}>Find quotes</button>
-          </form>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-)
+    )
+  }
+}
 
-export default injectSheet(styles)(BraquetHomePage)
+export default injectSheet(styles)(withRouter(BraquetHomePage))

@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Typeahead, Menu, MenuItem } from 'react-bootstrap-typeahead'
+import queryString from 'query-string'
 
 class FilterBar extends React.Component {
   constructor(props: Object) {
@@ -15,6 +16,7 @@ class FilterBar extends React.Component {
     this.onBrandChange = this.onBrandChange.bind(this)
     this.onPanelTypeChange = this.onPanelTypeChange.bind(this)
     this.onQuantityChange = this.onQuantityChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   state: {
@@ -35,9 +37,9 @@ class FilterBar extends React.Component {
     })
   }
 
-  onBrandChange(items: Object) {
-    this.setState({ brandSearch: items.length && this.props.query.brandSearch ? items[0] :
-      this.props.query.brandSearch || '' })
+
+  onBrandChange(text: string) {
+    this.setState({ brandSearch: text })
   }
 
   onPanelTypeChange(event: Object) {
@@ -51,21 +53,35 @@ class FilterBar extends React.Component {
   onBrandChange: Function
   onPanelTypeChange: Function
   onQuantityChange: Function
+  handleSubmit: Function
   typeahead: Object
 
   props: {
     orgs: Object,
     query: Object,
+    history: Object,
+  }
+
+  handleSubmit(event: Object) {
+    event.preventDefault()
+
+    const query = {
+      brandSearch: this.state.brandSearch,
+      panelType: this.state.panelType || '',
+      quantity: this.state.quantity || '0kW-100kW',
+    }
+
+    this.props.history.push(`/quotes?${queryString.stringify(query)}`)
   }
 
   render() {
     return (
       <div className="container-fluid d-flex justify-content-center mb-2" style={{ border: '1px solid #cecece' }}>
-        <form className="row mb-2 mt-4 w-100 d-flex justify-content-center">
+        <form className="row mb-2 mt-4 w-100 d-flex justify-content-center" onSubmit={this.handleSubmit}>
           <div className="col-md-3 col-xs-12">
             <label className="mr-sm-2 sr-only" htmlFor="brandSearch">Search for a Brand</label>
-            {this.props.orgs && <Typeahead
-              onChange={this.onBrandChange}
+            <Typeahead
+              onInputChange={this.onBrandChange}
               selected={[this.state.brandSearch]}
               value={this.state.brandSearch}
               options={this.props.orgs.toArray()}
@@ -84,7 +100,7 @@ class FilterBar extends React.Component {
                   )}
                 </Menu>
               )}
-            />}
+            />
           </div>
 
           <div className="col-md-3 col-xs-12">
