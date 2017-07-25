@@ -25,7 +25,7 @@ export default rowData => new Promise((resolve, reject) => {
       // Get add a row to the spreadsheet
       doc.addRow(1, rowData, (err2, row) => {
         if (err2) {
-          reject(err)
+          reject(err2)
         } else {
           resolve(row)
         }
