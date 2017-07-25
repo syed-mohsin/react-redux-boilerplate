@@ -13,7 +13,6 @@ const credentials = {
   client_x509_cert_url: process.env.GOOGLE_SHEETS_CLIENT_X509_CERT_URL || 'GOOGLE_SHEETS_CLIENT_X509_CERT_URL',
 }
 
-
 // Create a document object using the ID of the spreadsheet - obtained from its URL.
 const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEETS_SPREADSHEET_ID)
 
