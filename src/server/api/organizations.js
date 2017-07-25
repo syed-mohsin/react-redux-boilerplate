@@ -35,7 +35,7 @@ export default (app: Object) => {
       const rowData = {
         uuid: req.session.v,
         name: organization.companyName,
-        url: organization.url,
+        url: addRef(organization.url),
       }
 
       res.rowData = rowData
