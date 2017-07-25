@@ -52,7 +52,7 @@ export default (app: Object) => {
       addSpreadSheetRow(res.rowData)
       .then(() => {})
       // eslint-disable-next-line no-console
-      .catch((e) => { console.log(e) })
+      .catch((e) => { console.log('spreadsheet error', e) })
     }
   })
 }
