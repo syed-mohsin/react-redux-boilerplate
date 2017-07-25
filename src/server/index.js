@@ -3,6 +3,7 @@
 import express from 'express'
 import { Server } from 'http'
 import mongoose from 'mongoose'
+import cookieSession from 'cookie-session'
 
 import routing from './routing'
 import apiRouting from './api/routes'
@@ -29,6 +30,13 @@ app.get('*.js', (req, res, next) => {
 
 app.use(STATIC_PATH, express.static('dist'))
 app.use(STATIC_PATH, express.static('public'))
+
+app.use(cookieSession({
+  name: 'session',
+  keys: [process.env.SESSION_KEY || 'cat_board_key'],
+
+  maxAge: 365 * 24 * 60 * 60 * 1000,
+}))
 
 apiRouting(app)
 routing(app)

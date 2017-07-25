@@ -2,6 +2,8 @@
 
 import mongoose from 'mongoose'
 
+import addSpreadSheetRow from '../spreadsheet'
+
 const API_ORGANIZATIONS_NAMES_ROUTE = '/api/organizations/names'
 const API_ORGANIZATIONS_REDIRECT_ROUTE = '/api/organizations/:organizationId/redirect'
 
@@ -25,13 +27,31 @@ export default (app: Object) => {
     })
   })
 
-  app.get(API_ORGANIZATIONS_REDIRECT_ROUTE, (req, res) => {
+  app.get(API_ORGANIZATIONS_REDIRECT_ROUTE, (req, res, next) => {
     Organization.findById(req.params.organizationId)
     .then((organization) => {
       res.redirect(addRef(organization.url))
+
+      const rowData = {
+        uuid: req.session.v,
+        name: organization.companyName,
+        url: organization.url,
+      }
+
+      res.rowData = rowData
+      next()
     })
     .catch(() => {
       res.redirect('/')
     })
+  })
+
+  // spreadsheet logging middleware
+  app.use(API_ORGANIZATIONS_REDIRECT_ROUTE, (req, res) => {
+    if (res.rowData) {
+      addSpreadSheetRow(res.rowData)
+      .then(() => {})
+      .catch(() => {})
+    }
   })
 }

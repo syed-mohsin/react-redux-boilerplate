@@ -1,5 +1,7 @@
 // @flow
 
+import uuid from 'uuid/v1'
+
 import {
   homePage,
   quotesPage,
@@ -19,6 +21,15 @@ import {
 import renderApp from './render-app'
 
 export default (app: Object) => {
+  // middleware to add cookie id if none exists
+  app.use((req, res, next) => {
+    if (!req.session.v) {
+      req.session.v = uuid()
+    }
+
+    next()
+  })
+
   app.get(HOME_PAGE_ROUTE, (req, res) => {
     res.send(renderApp(req.url, homePage()))
   })
