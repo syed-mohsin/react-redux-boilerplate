@@ -36,6 +36,7 @@ export default (app: Object) => {
         uuid: req.session.v,
         name: organization.companyName,
         url: addRef(organization.url),
+        date: new Date(),
       }
 
       res.rowData = rowData
