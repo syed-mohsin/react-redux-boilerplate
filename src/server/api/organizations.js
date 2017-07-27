@@ -2,10 +2,12 @@
 
 import mongoose from 'mongoose'
 
-import addSpreadSheetRow from '../spreadsheet'
+import {
+  API_ORGANIZATIONS_NAMES_ROUTE,
+  organizationRedirectEndpointRoute,
+} from '../../shared/routes'
 
-const API_ORGANIZATIONS_NAMES_ROUTE = '/api/organizations/names'
-const API_ORGANIZATIONS_REDIRECT_ROUTE = '/api/organizations/:organizationId/redirect'
+import addSpreadSheetRow from '../spreadsheet'
 
 const addRef = url => (
   url.indexOf('?') !== -1 ? `${url}&ref=braquet.io` : `${url}?ref=braquet.io`
@@ -15,6 +17,7 @@ export default (app: Object) => {
   const Organization = mongoose.model('Organization')
   const Quote = mongoose.model('PriceReview')
 
+  // api endpoint to fetch brand names
   app.get(API_ORGANIZATIONS_NAMES_ROUTE, (req, res) => {
     Quote.distinct('manufacturer')
     .exec()
@@ -27,7 +30,8 @@ export default (app: Object) => {
     })
   })
 
-  app.get(API_ORGANIZATIONS_REDIRECT_ROUTE, (req, res, next) => {
+  // handle redirecting user to a matching supplier page
+  app.get(organizationRedirectEndpointRoute(), (req, res, next) => {
     Organization.findById(req.params.organizationId)
     .then((organization) => {
       res.redirect(addRef(organization.url))
@@ -48,7 +52,7 @@ export default (app: Object) => {
   })
 
   // spreadsheet logging middleware
-  app.use(API_ORGANIZATIONS_REDIRECT_ROUTE, (req, res) => {
+  app.use(organizationRedirectEndpointRoute(), (req, res) => {
     if (res.rowData) {
       addSpreadSheetRow(res.rowData)
       .then(() => {})

@@ -48,7 +48,7 @@ const QuoteListItem = ({ item, listItemHandler }: Props) => (
             <a href="" data-toggle="modal" data-target=".js-modal" onClick={() => listItemHandler(item.get('organization'))} style={{ fontSize: '14px' }}>{`(${item.get('organization').get('reviews_length')})`} Reviews</a>
           </span>
         </div>
-        <div className="row mx-auto d-flex justify-content-between">
+        <div className="row mx-auto d-flex justify-content-between hidden-xs-down">
           <div className="d-flex flex-column align-items-center mb-1 col-xs-12 col-md-4 p-2" style={{ whiteSpace: 'nowrap' }}>
             <small><b>{`${item.get('stcPower')}`}</b></small>
             <small>Module Wattage</small>

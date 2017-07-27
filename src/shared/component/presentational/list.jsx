@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react'
-import uuid from 'uuid/v1'
 import $ from 'jquery'
 
 import Loader from './loader'
@@ -59,11 +58,18 @@ class List extends React.Component {
            />
          ))}
 
-        {this.props.message === 'loading' && <Loader key={uuid()} /> }
+        {this.props.message === 'loading' && <Loader /> }
 
-        {(this.props.message === 'failure' ||
-          (this.props.message === 'success' && this.props.items.size === 0)) &&
+        {(this.props.message === 'success' && this.props.items.size === 0) &&
           <div className="alert alert-info text-center">No results</div>}
+
+        {this.props.message === 'failure' &&
+          <div className="alert alert-danger text-center d-flex flex-column">
+            Failed to Load Data.
+            {' '}
+            <a role="button" tabIndex="-1" onClick={() => this.props.loadItems(this.props.data)}>Please Try Again</a>
+          </div>
+        }
       </div>
     )
   }

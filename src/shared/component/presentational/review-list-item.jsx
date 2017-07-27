@@ -31,7 +31,7 @@ const ReviewListItem = ({ item, listItemHandler }: Props) => (
           />
         </div>
         <div className="mb-3">
-          <small style={{ fontSize: '14px' }}> by anonymous on {(new Date(item.get('created'))).toLocaleDateString('en-US')}</small>
+          <small style={{ fontSize: '14px' }}> on {(new Date(item.get('created'))).toLocaleDateString('en-US')}</small>
         </div>
         <div>{ item.get('content') }</div>
       </div>

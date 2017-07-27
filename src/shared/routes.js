@@ -8,6 +8,8 @@ export const FAQ_PAGE_ROUTE = '/faq'
 export const TEAM_PAGE_ROUTE = '/team'
 export const PRIVACY_POLICY_PAGE_ROUTE = '/privacy-policy'
 
+export const API_ORGANIZATIONS_NAMES_ROUTE = '/api/organizations/names'
+
 export const orgNamesEndpointRoute = (domain: ?string) => (
   `${domain || ''}/api/organizations/names`
 )
