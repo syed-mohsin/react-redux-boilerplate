@@ -36,12 +36,12 @@ export default (app: Object) => {
     .then((organization) => {
       res.redirect(addRef(organization.url))
 
-      const rowData = {
+      const rowData = Object.assign({}, {
         uuid: req.session.v,
         name: organization.companyName,
         url: addRef(organization.url),
         date: new Date(),
-      }
+      }, req.query)
 
       res.rowData = rowData
       next()

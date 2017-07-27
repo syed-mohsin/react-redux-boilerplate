@@ -26,4 +26,5 @@ test('reviewsEndpointRoute', () => {
 test('organizationRedirectEndpointRoute', () => {
   expect(organizationRedirectEndpointRoute()).toBe('/api/organizations/:organizationId/redirect')
   expect(organizationRedirectEndpointRoute('1234')).toBe('/api/organizations/1234/redirect')
+  expect(organizationRedirectEndpointRoute('1234', { a: 1, b: 2 })).toBe('/api/organizations/1234/redirect/?a=1&b=2')
 })

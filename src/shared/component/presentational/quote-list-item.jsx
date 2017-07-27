@@ -18,6 +18,13 @@ const formatPanelType = panelType => (
   ['Mono', 'Poly'].indexOf(panelType) !== -1 ? `${panelType}crystalline` : panelType
 )
 
+const buildRedirectQuery = item => ({
+  manufacturer: item.get('manufacturer'),
+  quantity: item.get('quantity'),
+  panelType: item.get('panelType'),
+  wattage: item.get('stcPower'),
+})
+
 const QuoteListItem = ({ item, listItemHandler }: Props) => (
   <div className="list-group-item mb-3 d-flex justify-content-center mx-auto w-100" style={{ boxShadow: '2px 2px 5px #888888', borderRadius: '5px' }}>
     <div className="w-100 d-flex justify-content-between align-items-center flex-column flex-md-row">
@@ -67,7 +74,7 @@ const QuoteListItem = ({ item, listItemHandler }: Props) => (
         <h6><big style={{ whiteSpace: 'nowrap' }}>{`$${Number(item.get('price') / 100).toFixed(3)} per watt`}</big></h6>
         <a
           role="button"
-          href={organizationRedirectEndpointRoute(item.get('organization').get('_id'))}
+          href={organizationRedirectEndpointRoute(item.get('organization').get('_id'), buildRedirectQuery(item))}
           target="_blank"
           rel="noopener noreferrer"
           className="btn"

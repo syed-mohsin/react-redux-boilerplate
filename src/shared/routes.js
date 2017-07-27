@@ -18,8 +18,8 @@ export const quotesEndpointRoute = (domain: ?string, query: ?Object) => (
   `${domain || ''}/api/quotes${query ? `/?${queryString.stringify(query)}` : ''}`
 )
 
-export const organizationRedirectEndpointRoute = (organizationId: ?string) => (
-  `/api/organizations/${organizationId || ':organizationId'}/redirect`
+export const organizationRedirectEndpointRoute = (organizationId: ?string, query: ?Object) => (
+  `/api/organizations/${organizationId || ':organizationId'}/redirect${query ? `/?${queryString.stringify(query)}` : ''}`
 )
 
 export const reviewsEndpointRoute = (domain: ?string, organizationId: ?string) => (
