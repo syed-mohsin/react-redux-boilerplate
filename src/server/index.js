@@ -1,5 +1,6 @@
 // @flow
 
+import path from 'path'
 import express from 'express'
 import { Server } from 'http'
 import mongoose from 'mongoose'
@@ -36,6 +37,11 @@ app.use(cookieSession({
 
   maxAge: 365 * 24 * 60 * 60 * 1000,
 }))
+
+// get robots.txt
+app.use('/robots.txt', (req, res) => {
+  res.sendFile(path.resolve('./public/robots.txt'))
+})
 
 routing(app)
 

@@ -1,7 +1,7 @@
 // @flow
 
 export const WEB_PORT = process.env.PORT || 3000
-export const STATIC_PATH = '/'
+export const STATIC_PATH = '/static'
 export const APP_NAME = 'Braquet'
 
 export const WDS_PORT = 7000
