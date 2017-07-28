@@ -6,7 +6,6 @@ import mongoose from 'mongoose'
 import cookieSession from 'cookie-session'
 
 import routing from './routing'
-import apiRouting from './api/routes'
 import loadModels from './models'
 import { WEB_PORT, STATIC_PATH, MONGODB_URI } from '../shared/config'
 import { isProd } from '../shared/util'
@@ -38,7 +37,6 @@ app.use(cookieSession({
   maxAge: 365 * 24 * 60 * 60 * 1000,
 }))
 
-apiRouting(app)
 routing(app)
 
 http.listen(WEB_PORT, () => {
