@@ -11,7 +11,7 @@ import queryString from 'query-string'
 
 import { STATIC_PATH, APP_NAME } from '../../config'
 import QuoteListItem from '../presentational/quote-list-item'
-import data from '../../home-data.json'
+import data from '../.././home-data.json'
 
 import { reviewsSetOrganization } from '../../action/reviews'
 
