@@ -40,7 +40,6 @@ const App = () =>
             <Route path={FAQ_PAGE_ROUTE} component={FaqPage} />
             <Route path={TEAM_PAGE_ROUTE} component={TeamPage} />
             <Route path={PRIVACY_POLICY_PAGE_ROUTE} component={PrivacyPolicyPage} />
-            {/* <Route component={NotFoundPage} /> */}
             <Redirect to="/" />
           </Switch>
         </ScrollToTop>

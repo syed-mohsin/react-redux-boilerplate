@@ -74,8 +74,7 @@ const styles = {
 class BraquetHomePage extends React.Component {
   constructor(props) {
     super(props)
-    const a = data.quotes.slice(0, 3)
-    this.items = Immutable.fromJS(a)
+    this.items = Immutable.fromJS(data.quotes.slice(0, 3))
   }
 
   props: {
