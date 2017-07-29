@@ -16,6 +16,8 @@ import PrivacyPolicyPage from './component/page/privacy-policy'
 // import NotFoundPage from './component/page/not-found'
 
 import ScrollToTop from './component/presentational/scroll-to-top'
+import ReviewList from './component/container/review-list'
+import Modal from './component/presentational/modal'
 
 import {
   HOME_PAGE_ROUTE,
@@ -43,6 +45,9 @@ const App = () =>
           </Switch>
         </ScrollToTop>
       </div>
+      <Modal title="Recent Reviews">
+        <ReviewList />
+      </Modal>
       <Footer />
     </div>
   )

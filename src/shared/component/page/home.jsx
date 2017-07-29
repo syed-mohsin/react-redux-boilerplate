@@ -1,6 +1,8 @@
 // @flow
 
 import React from 'react'
+import Immutable from 'immutable'
+import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import Helmet from 'react-helmet'
 import injectSheet from 'react-jss'
@@ -8,18 +10,24 @@ import classNames from 'classnames'
 import queryString from 'query-string'
 
 import { STATIC_PATH, APP_NAME } from '../../config'
+import QuoteListItem from '../presentational/quote-list-item'
+import data from '../../home-data.json'
+
+import { reviewsSetOrganization } from '../../action/reviews'
 
 const styles = {
   homeBackground: {
     background: `url("${STATIC_PATH}/img/home-background.jpg")`,
     backgroundSize: 'cover',
+    backgroundAttachment: 'fixed',
   },
   homeBackgroundShade: {
     backgroundColor: 'rgba(0,0,0,0.3)',
-    height: '100vh',
+  },
+  view: {
+    composes: 'mb-5',
   },
   homeDescription: {
-    composes: 'mb-5',
     lineHeight: '48px',
     fontWeight: '700',
     color: 'white',
@@ -51,16 +59,34 @@ const styles = {
       cursor: 'pointer',
     },
   },
+  quotesContainer: {
+    composes: 'container-fluid pb-3',
+    '@media (max-width: 767px)': {
+      maxWidth: '462px',
+    },
+    '@media (min-width: 768px)': {
+      marginLeft: '100px',
+      marginRight: '100px',
+    },
+  },
 }
 
 class BraquetHomePage extends React.Component {
+  constructor(props) {
+    super(props)
+    const a = data.quotes.slice(0, 3)
+    this.items = Immutable.fromJS(a)
+  }
+
   props: {
     classes: Object,
     history: Object,
+    listItemHandler: Function,
   }
 
   panelType: Object
   quantity: Object
+  items: any
 
   handleSubmit(e) {
     e.preventDefault()
@@ -85,39 +111,53 @@ class BraquetHomePage extends React.Component {
         />
         <div className={classes.homeBackground}>
           <div className={classes.homeBackgroundShade}>
-            <div className={classNames({
-              [classes.homeContainer]: true,
-              container: true,
-            })}
-            >
-              <h1 className={classes.homeDescription}>
-                Lookup quotes from solar module manufacturers and resellers
-              </h1>
-              <form onSubmit={e => this.handleSubmit(e)}>
-                <h4 className={classes.homeSubDescription}>
-                  Make sure your company is receiving competitive quotes from your suppliers.
+            <div className={classes.view} id="home">
+              <div className={classNames({ [classes.homeContainer]: true, container: true })}>
+                <h1 className={classes.homeDescription} style={{ marginBottom: '3rem' }}>
+                  Lookup quotes from solar module manufacturers and resellers
+                </h1>
+                <form onSubmit={e => this.handleSubmit(e)}>
+                  <h4 className={classes.homeSubDescription}>
+                    Make sure your company is receiving competitive quotes from your suppliers.
+                  </h4>
+                  <div className="selectContainer d-flex justify-content-between">
+                    <select name="panelType" className="custom-select w-50" ref={(input) => { this.panelType = input }} required>
+                      <option value="">Type of Module</option>
+                      <option value="Mono">Monocrystalline</option>
+                      <option value="Poly">Polycrystalline</option>
+                      <option value="CIGS">CIGS</option>
+                      <option value="CdTe">CdTe</option>
+                      <option value="all">All</option>
+                    </select>
+
+                    <select name="quantity" className="custom-select w-50" ref={(input) => { this.quantity = input }} required>
+                      <option value="">Project Size</option>
+                      <option value="0kW-100kW">0kW-100kW</option>
+                      <option value="101kW-500kW">101kW-500kW</option>
+                      <option value="501kW-1MW">501kW-1MW</option>
+                      <option value=">1MW">{'>1MW'}</option>
+                    </select>
+                  </div>
+
+                  <button type="submit" className={classes.homeSubmitButton}>Find quotes</button>
+                </form>
+              </div>
+            </div>
+            <div id="quotes">
+              <div className={classes.quotesContainer}>
+                <h4 className={classNames({ [classes.homeDescription]: true, 'text-center mb-4': true })}>
+                  Recent quotes
                 </h4>
-                <div className="selectContainer d-flex justify-content-between">
-                  <select name="panelType" className="custom-select w-50" ref={(input) => { this.panelType = input }} required>
-                    <option value="">Type of Module</option>
-                    <option value="Mono">Monocrystalline</option>
-                    <option value="Poly">Polycrystalline</option>
-                    <option value="CIGS">CIGS</option>
-                    <option value="CdTe">CdTe</option>
-                    <option value="all">All</option>
-                  </select>
-
-                  <select name="quantity" className="custom-select w-50" ref={(input) => { this.quantity = input }} required>
-                    <option value="">Project Size</option>
-                    <option value="0kW-100kW">0kW-100kW</option>
-                    <option value="101kW-500kW">101kW-500kW</option>
-                    <option value="501kW-1MW">501kW-1MW</option>
-                    <option value=">1MW">{'>1MW'}</option>
-                  </select>
+                <div>
+                  {this.items.map(item => (
+                    <QuoteListItem
+                      key={item.get('_id')}
+                      item={item}
+                      listItemHandler={this.props.listItemHandler}
+                    />
+                  ))}
                 </div>
-
-                <button type="submit" className={classes.homeSubmitButton}>Find quotes</button>
-              </form>
+              </div>
             </div>
           </div>
         </div>
@@ -126,4 +166,8 @@ class BraquetHomePage extends React.Component {
   }
 }
 
-export default injectSheet(styles)(withRouter(BraquetHomePage))
+const mapDispatchToProps = dispatch => ({
+  listItemHandler: organization => dispatch(reviewsSetOrganization(organization)),
+})
+
+export default injectSheet(styles)(withRouter(connect(null, mapDispatchToProps)(BraquetHomePage)))
