@@ -66,7 +66,228 @@ const renderApp = (location: string, plainPartialState: ?Object, existingStore: 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="${STATIC_PATH}/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
         <link rel="stylesheet" href="${STATIC_PATH}/css/bootstrap.min.css">
-        <link rel="stylesheet" href="${STATIC_PATH}/css/cover.css">
+        <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+        <style>
+          /*
+           * Globals
+           */
+
+          /* Links */
+          a,
+          a:focus,
+          a:hover {
+            color: #fff;
+          }
+
+          /* Custom default button */
+          .btn-secondary,
+          .btn-secondary:hover,
+          .btn-secondary:focus {
+            color: #333;
+            text-shadow: none; /* Prevent inheritance from 'body' */
+            background-color: #fff;
+            border: .05rem solid #fff;
+          }
+
+
+          /*
+           * Base structure
+           */
+
+          html,
+          body {
+            height: 100%;
+            background: url('${STATIC_PATH}/img/background.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Play', sans-serif;
+          }
+          body {
+            color: #fff;
+            text-align: center;
+            text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
+          }
+
+          /* Extra markup and styles for table-esque vertical and horizontal centering */
+          .site-wrapper {
+            display: table;
+            width: 100%;
+            height: 100vh; /* For at least Firefox */
+            min-height: 100vh;
+            -webkit-box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
+                    box-shadow: inset 0 0 5rem rgba(0,0,0,.5);
+          }
+          .site-wrapper-inner {
+            display: table-cell;
+            vertical-align: top;
+          }
+          .cover-container {
+            margin-right: auto;
+            margin-left: auto;
+          }
+
+          /* Padding for spacing */
+          .inner {
+            padding: 2rem;
+          }
+
+
+          /*
+           * Header
+           */
+
+          .masthead {
+            margin-bottom: 2rem;
+          }
+
+          .masthead-brand {
+            margin-bottom: 0;
+          }
+
+          .nav-masthead .nav-link {
+            padding: .25rem 0;
+            font-weight: bold;
+            color: rgba(255,255,255,.5);
+            background-color: transparent;
+            border-bottom: .25rem solid transparent;
+          }
+
+          .nav-masthead .nav-link:hover,
+          .nav-masthead .nav-link:focus {
+            border-bottom-color: rgba(255,255,255,.25);
+          }
+
+          .nav-masthead .nav-link + .nav-link {
+            margin-left: 1rem;
+          }
+
+          .nav-masthead .active {
+            color: #fff;
+            border-bottom-color: #fff;
+          }
+
+          @media (min-width: 48em) {
+            .masthead-brand {
+              float: left;
+            }
+            .nav-masthead {
+              float: right;
+            }
+          }
+
+
+          /*
+           * Cover
+           */
+
+          .cover {
+            padding: 0 1.5rem;
+          }
+          .cover .btn-lg {
+            padding: .75rem 1.25rem;
+            font-weight: bold;
+          }
+
+
+          /*
+           * Footer
+           */
+
+          .mastfoot {
+            color: rgba(255,255,255,.5);
+          }
+
+
+          /*
+           * Affix and center
+           */
+
+          @media (min-width: 40em) {
+            /* Pull out the header and footer */
+            .masthead {
+              position: fixed;
+              top: 0;
+            }
+            .mastfoot {
+              position: fixed;
+              bottom: 0;
+            }
+            /* Start the vertical centering */
+            .site-wrapper-inner {
+              vertical-align: middle;
+            }
+            /* Handle the widths */
+            .masthead,
+            .mastfoot,
+            .cover-container {
+              width: 100%; /* Must be percentage or pixels for horizontal alignment */
+            }
+          }
+
+          @media (min-width: 62em) {
+            .masthead,
+            .mastfoot,
+            .cover-container {
+              width: 100%;
+            }
+          }
+
+          /* === 10.SUBSCRIBE === */
+          .bs4-newsletter{
+            padding: 80px 0;
+          }
+          .bs4-newsletter form{
+            max-width: 600px;
+            margin: 0 auto;
+          }
+          .bs4-newsletter .input-subscribe {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            height: 50px;
+            padding-left: 20px;
+            box-shadow: none !important;
+            margin-bottom: 10px;
+          }
+          .bs4-newsletter .text-light {
+              color: rgba(255, 255, 255, 0.7);
+          }
+          .bs4-newsletter .input-subscribe:focus {
+            border: 2px solid rgba(255, 255, 255, 0.6);
+          }
+
+          .bs4-newsletter input.input-subscribe::-webkit-input-placeholder {
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: normal;
+          }
+
+          .bs4-newsletter input.input-subscribe:-moz-placeholder {
+            color: rgba(255, 255, 255, 0.4);
+          }
+
+          .bs4-newsletter input.input-subscribe::-moz-placeholder {
+            color: rgba(255, 255, 255, 0.4);
+          }
+
+          .bs4-newsletter input.input-subscribe:-ms-input-placeholder {
+            color: rgba(255, 255, 255, 0.4);
+          }
+
+          .bs4-newsletter label.valid {
+            color: #ffffff;
+            font-weight: normal;
+            margin: 10px 0;
+          }
+          .bs4-newsletter .btn-white-fill {
+              padding: 8px 24px !important;
+              background-color: #ffffff;
+              border: 2px solid rgba(255, 255, 255, 0.75) !important;
+              border-radius: 50px;
+              font-weight: 500;
+              text-transform: uppercase;
+              letter-spacing: 0.04em;
+          }
+        </style>
         <style class="${JSS_SSR_CLASS}">${sheets.toString()}</style>
 
         ${process.env.GOOGLE_ANALYTICS_TRACKING_ID ? googleAnalytics : ''}
