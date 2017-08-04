@@ -22,6 +22,15 @@ const app = express()
 // flow-disable-next-line
 const http = Server(app)
 
+// app.use((req, res, next) => {
+//   if (!isProd || req.headers['x-forwarded-proto'] === 'https') {
+//     // OK, continue
+//     return next()
+//   }
+//
+//   return res.redirect(`https://${req.hostname}${req.url}`)
+// })
+
 // set up middleware to use gzipped js files
 app.get('*.js', (req, res, next) => {
   req.url = `${req.url}.gz`
