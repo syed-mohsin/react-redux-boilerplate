@@ -75,13 +75,22 @@ const CodeLancerHomePage = () => (
                     <form className="text-xs-center" id="subscribe-form" onSubmit={submitForm}>
                       <div className="form-group mb-0">
                         <label htmlFor="mce-FULL_NAME" />
-                        <input type="text" className="form-control input-subscribe" id="mce-FULL_NAME" name="name" placeholder="Enter Full Name" required />
+                        <input type="text" className="form-control input-subscribe mb-0" id="mce-FULL_NAME" name="name" placeholder="Enter Full Name" required />
                       </div>
                       <div className="form-group mb-0">
                         <label htmlFor="mce-EMAIL" />
                         <input type="email" className="form-control input-subscribe" id="mce-EMAIL" name="email" placeholder="Enter Email Address" required />
                       </div>
-                      <button type="submit" className="btn btn-white-fill subscribe-action-button mt-2">Join Now</button>
+                      <div className="form-group mb-0">
+                        <div className="toggle_radio mt-4">
+                          <input type="radio" className="toggle_option" id="first_toggle" name="toggle_option" />
+                          <input type="radio" className="toggle_option" id="second_toggle" name="toggle_option" />
+                          <label htmlFor="first_toggle" style={{ fontSize: '18px', verticalAlign: 'middle' }}>Student</label>
+                          <label htmlFor="second_toggle" style={{ fontSize: '18px', verticalAlign: 'middle' }}>Employer</label>
+                          <div className="toggle_option_slider" />
+                        </div>
+                      </div>
+                      <button type="submit" className="btn btn-white-fill subscribe-action-button mt-3">Join Now</button>
                       <p className="text-light mt-1">
                         <small>Stay updated on exciting new coding projects</small>
                       </p>

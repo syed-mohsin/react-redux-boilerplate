@@ -288,6 +288,69 @@ const renderApp = (location: string, plainPartialState: ?Object, existingStore: 
               text-transform: uppercase;
               letter-spacing: 0.04em;
           }
+
+          .toggle_radio{
+            position: relative;
+            background: rgba(255,255,255,.1);
+            margin: 4px auto;
+            overflow: hidden;
+            padding: 0 !important;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+            position: relative;
+            height: 36px;
+            width: 215px;
+          }
+          .toggle_radio > * {
+            float: left;
+          }
+          .toggle_radio input[type=radio]{
+            display: none;
+            /*position: fixed;*/
+          }
+          .toggle_radio label{
+            color: rgba(255,255,255,.9);
+            z-index: 0;
+            display: block;
+            width: 100px;
+            height: 30px;
+            margin: 3px 3px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 1;
+            /*background: rgba(0,0,0,.1);*/
+            text-align: center;
+            /*margin: 0 2px;*/
+            /*background: blue;*/ /*make it blue*/
+          }
+          .toggle_option_slider{
+            /*display: none;*/
+            /*background: red;*/
+            width: 100px;
+            height: 29px;
+            position: absolute;
+            top: 3px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+            -webkit-transition: all .4s ease;
+            -moz-transition: all .4s ease;
+            -o-transition: all .4s ease;
+            -ms-transition: all .4s ease;
+            transition: all .4s ease;
+          }
+
+          #first_toggle:checked ~ .toggle_option_slider{
+            background: rgba(255,255,255,.3);
+            left: 3px;
+          }
+          #second_toggle:checked ~ .toggle_option_slider{
+            background: rgba(255,255,255,.3);
+            left: 109px;
+          }
         </style>
         <style class="${JSS_SSR_CLASS}">${sheets.toString()}</style>
 
