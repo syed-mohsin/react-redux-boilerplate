@@ -3,20 +3,20 @@
 import path from 'path'
 import express from 'express'
 import { Server } from 'http'
-import mongoose from 'mongoose'
+// import mongoose from 'mongoose'
 import cookieSession from 'cookie-session'
 
 import routing from './routing'
-import loadModels from './models'
-import { WEB_PORT, STATIC_PATH, MONGODB_URI } from '../shared/config'
+// import loadModels from './models'
+import { WEB_PORT, STATIC_PATH } from '../shared/config'
 import { isProd } from '../shared/util'
 
 const app = express()
 
 // initialize mongoose connection and load models
-mongoose.connect(isProd ? process.env.MONGODB_URI || MONGODB_URI : MONGODB_URI)
-mongoose.Promise = global.Promise
-loadModels()
+// mongoose.connect(isProd ? process.env.MONGODB_URI || MONGODB_URI : MONGODB_URI)
+// mongoose.Promise = global.Promise
+// loadModels()
 
 // flow-disable-next-line
 const http = Server(app)
