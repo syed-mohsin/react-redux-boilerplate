@@ -1,18 +1,14 @@
 // @flow
 
 import React from 'react'
-import Immutable from 'immutable'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import Helmet from 'react-helmet'
 import injectSheet from 'react-jss'
 import classNames from 'classnames'
 import queryString from 'query-string'
-import $ from 'jquery'
 
 import { STATIC_PATH, APP_NAME } from '../../config'
-import QuoteListItem from '../presentational/quote-list-item'
-import data from '../../../../public/json/home-data.json'
 
 import { reviewsSetOrganization } from '../../action/reviews'
 
@@ -73,22 +69,16 @@ const styles = {
   },
 }
 
-const scrollToQuotes = () => {
-  $('html, body').animate({
-    scrollTop: $('#quotes').offset().top,
-  }, 1000)
-}
+// const scrollToQuotes = () => {
+//   $('html, body').animate({
+//     scrollTop: $('#quotes').offset().top,
+//   }, 1000)
+// }
 
 class BraquetHomePage extends React.Component {
-  constructor(props) {
-    super(props)
-    this.items = Immutable.fromJS(data.quotes.slice(0, 3))
-  }
-
   props: {
     classes: Object,
     history: Object,
-    listItemHandler: Function,
   }
 
   panelType: Object
@@ -148,25 +138,6 @@ class BraquetHomePage extends React.Component {
 
                   <button type="submit" className={classes.homeSubmitButton}>Find quotes</button>
                 </form>
-              </div>
-              <div className="text-center" style={{ paddingBottom: '70px' }} onClick={() => scrollToQuotes()} role="button" tabIndex="-1">
-                V
-              </div>
-            </div>
-            <div id="quotes">
-              <div className={classes.quotesContainer}>
-                <h4 className={classNames({ [classes.homeDescription]: true, 'text-center mb-4': true })}>
-                  Recent quotes
-                </h4>
-                <div>
-                  {this.items.map(item => (
-                    <QuoteListItem
-                      key={item.get('_id')}
-                      item={item}
-                      listItemHandler={this.props.listItemHandler}
-                    />
-                  ))}
-                </div>
               </div>
             </div>
           </div>
