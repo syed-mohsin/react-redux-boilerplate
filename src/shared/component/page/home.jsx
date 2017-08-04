@@ -22,13 +22,13 @@ const submitForm = (e) => {
     },
   })
   .then(() => {
-    NotificationManager.success('Thank you!')
+    NotificationManager.success('Thanks for signing up!')
     $('#mce-FULL_NAME').val(undefined)
     $('#mce-EMAIL').val(undefined)
     $('.subscribe-action-button').prop('disabled', false)
   })
   .catch(() => {
-    NotificationManager.error('Please try again')
+    NotificationManager.error('Unable to sign up. Please try again')
     $('.subscribe-action-button').prop('disabled', false)
   })
 }
@@ -81,7 +81,7 @@ const CodeLancerHomePage = () => (
                         <label htmlFor="mce-EMAIL" />
                         <input type="email" className="form-control input-subscribe" id="mce-EMAIL" name="email" placeholder="Enter Email Address" required />
                       </div>
-                      <button type="submit" className="btn btn-white-fill subscribe-action-button">Join Now</button>
+                      <button type="submit" className="btn btn-white-fill subscribe-action-button mt-2">Join Now</button>
                       <p className="text-light mt-1">
                         <small>Stay updated on exciting new coding projects</small>
                       </p>

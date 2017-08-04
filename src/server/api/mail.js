@@ -1,37 +1,42 @@
 // @flow
 
-import nodemailer from 'nodemailer'
+import mailgunJS from 'mailgun-js'
 
-// create reusable transporter object using the default SMTP transport
-const transporter = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 465,
-  secure: true, // secure:true for port 465, secure:false for port 587
-  auth: {
-    user: process.env.MAILER_EMAIL,
-    pass: process.env.MAILER_PASSWORD,
-  },
-})
+const apiKey = process.env.MAILGUN_API_KEY
+const domain = 'thecodelancer.com'
+const mailgun = mailgunJS({ apiKey, domain })
 
 export default (app: Object) => {
-  // api endpoint to fetch brand names
   app.post('/api/mail', (req, res) => {
-    // setup email data with unicode symbols
-    const mailOptions = {
-      from: '"CodeLancer" <syed@codelancer.com>', // sender address
-      to: process.env.MAILER_EMAIL, // list of receivers
-      subject: 'Codelancer: New Signup', // Subject line
-      text: `Email: ${req.body.email}, Name: ${req.body.name}`, // plain text body
-      html: `<b>Email: ${req.body.email}, Name: ${req.body.name}</b>`, // html body
+    const emailData = {
+      from: 'CodeLancer <syed@codelancer.com>',
+      to: 'syedm.90@gmail.com',
+      subject: 'Codelancer: New Signup',
+      text: `Email: ${req.body.email}, Name: ${req.body.name}`,
+      html: `<b>Email: ${req.body.email}, Name: ${req.body.name}</b>`,
     }
 
-    // send mail with defined transport object
-    transporter.sendMail(mailOptions, (err, info) => {
+    mailgun.messages().send(emailData, (err, body) => {
       if (err) {
         res.status(404).json(err)
       } else {
-        res.json(info)
+        res.json(body)
       }
+    })
+
+    const mailingList = mailgun.lists('newsletter@thecodelancer.com')
+
+    const user = {
+      subscribed: true,
+      address: req.body.email,
+      name: req.body.name,
+      vars: { userType: req.body.userType },
+    }
+
+    mailingList.members().create(user, (err, data) => {
+      // `data` is the member details
+      // eslint-disable-next-line no-console
+      console.log(err, data)
     })
   })
 }
