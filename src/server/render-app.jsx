@@ -65,24 +65,8 @@ const renderApp = (location: string, plainPartialState: ?Object, existingStore: 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="${STATIC_PATH}/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
-        <style>
-          html, body {
-            height: 100%;
-            margin: 0;
-          }
-          .js-app, .js-app > [data-reactroot] {
-            height: 100%;
-          }
-          .main-app {
-            min-height: 100%;
-            margin-bottom: -50px;
-          }
-          a[role=button] {
-            display: block;
-            width: 100%;
-          }
-        </style>
         <link rel="stylesheet" href="${STATIC_PATH}/css/bootstrap.min.css">
+        <link rel="stylesheet" href="${STATIC_PATH}/css/cover.css">
         <style class="${JSS_SSR_CLASS}">${sheets.toString()}</style>
 
         ${process.env.GOOGLE_ANALYTICS_TRACKING_ID ? googleAnalytics : ''}

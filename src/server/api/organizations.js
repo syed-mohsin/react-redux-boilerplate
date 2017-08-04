@@ -7,8 +7,6 @@ import {
   organizationRedirectEndpointRoute,
 } from '../../shared/routes'
 
-import addSpreadSheetRow from '../spreadsheet'
-
 const addRef = url => (
   url.indexOf('?') !== -1 ? `${url}&ref=braquet.io` : `${url}?ref=braquet.io`
 )
@@ -49,15 +47,5 @@ export default (app: Object) => {
     .catch(() => {
       res.redirect('/')
     })
-  })
-
-  // spreadsheet logging middleware
-  app.use(organizationRedirectEndpointRoute(), (req, res) => {
-    if (res.rowData) {
-      addSpreadSheetRow(res.rowData)
-      .then(() => {})
-      // eslint-disable-next-line no-console
-      .catch((e) => { console.log('spreadsheet error', e) })
-    }
   })
 }
