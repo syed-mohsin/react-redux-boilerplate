@@ -12,8 +12,8 @@ export default (app: Object) => {
       from: 'CodeLancer <syed@codelancer.com>',
       to: 'syedm.90@gmail.com',
       subject: 'Codelancer: New Signup',
-      text: `Email: ${req.body.email}, Name: ${req.body.name}`,
-      html: `<b>Email: ${req.body.email}, Name: ${req.body.name}</b>`,
+      text: `Email: ${req.body.email}, Name: ${req.body.name}, Role: ${req.body.userType}`,
+      html: `<b>Email: ${req.body.email}, Name: ${req.body.name}, Role: ${req.body.userType}</b>`,
     }
 
     mailgun.messages().send(emailData, (err, body) => {

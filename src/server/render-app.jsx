@@ -225,7 +225,7 @@ const renderApp = (location: string, plainPartialState: ?Object, existingStore: 
             }
           }
 
-          @media (min-width: 62em) {
+          @media (max-width: 62em) {
             .masthead,
             .mastfoot,
             .cover-container {
@@ -235,7 +235,7 @@ const renderApp = (location: string, plainPartialState: ?Object, existingStore: 
 
           /* === 10.SUBSCRIBE === */
           .bs4-newsletter{
-            padding: 80px 0;
+            padding: 0 0;
           }
           .bs4-newsletter form{
             max-width: 600px;

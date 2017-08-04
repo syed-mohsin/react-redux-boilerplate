@@ -19,6 +19,7 @@ const submitForm = (e) => {
     data: {
       name: $('#mce-FULL_NAME').val(),
       email: $('#mce-EMAIL').val(),
+      userType: $('#first_toggle').is(':checked') ? $('#first_toggle').val() : $('#second_toggle').val(),
     },
   })
   .then(() => {
@@ -66,7 +67,7 @@ const CodeLancerHomePage = () => (
                 <div className="row">
                   <div className="col-sm-12 text-xs-center">
                     <h3 className="title text-white">Freelance for College Coders</h3>
-                    <p className="text-light sub-title">Hire a talented young developer for your next project</p>
+                    <p className="text-light sub-title hidden-sm-down">Hire a talented young developer for your next project</p>
                   </div>
                 </div>
 
@@ -83,16 +84,16 @@ const CodeLancerHomePage = () => (
                       </div>
                       <div className="form-group mb-0">
                         <div className="toggle_radio mt-4">
-                          <input type="radio" className="toggle_option" id="first_toggle" name="toggle_option" />
-                          <input type="radio" className="toggle_option" id="second_toggle" name="toggle_option" />
-                          <label htmlFor="first_toggle" style={{ fontSize: '18px', verticalAlign: 'middle' }}>Student</label>
-                          <label htmlFor="second_toggle" style={{ fontSize: '18px', verticalAlign: 'middle' }}>Employer</label>
+                          <input type="radio" className="toggle_option" id="first_toggle" name="userType" defaultChecked value="employer" />
+                          <input type="radio" className="toggle_option" id="second_toggle" name="userType" value="student" />
+                          <label htmlFor="first_toggle" style={{ fontSize: '18px' }}>Employer</label>
+                          <label htmlFor="second_toggle" style={{ fontSize: '18px' }}>Student</label>
                           <div className="toggle_option_slider" />
                         </div>
                       </div>
                       <button type="submit" className="btn btn-white-fill subscribe-action-button mt-3">Join Now</button>
                       <p className="text-light mt-1">
-                        <small>Stay updated on exciting new coding projects</small>
+                        {/* <small>Stay updated on exciting new coding projects</small> */}
                       </p>
                     </form>
                   </div>
