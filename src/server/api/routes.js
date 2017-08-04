@@ -1,11 +1,7 @@
 // @flow
 
-import quotesRoutes from './quotes'
-import organizationRoutes from './organizations'
-import reviewsRoutes from './reviews'
+import mailRoutes from './mail'
 
 export default (app: Object) => {
-  quotesRoutes(app)
-  organizationRoutes(app)
-  reviewsRoutes(app)
+  mailRoutes(app)
 }

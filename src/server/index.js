@@ -3,6 +3,7 @@
 import path from 'path'
 import express from 'express'
 import { Server } from 'http'
+import bodyParser from 'body-parser'
 // import mongoose from 'mongoose'
 import cookieSession from 'cookie-session'
 
@@ -30,6 +31,9 @@ app.get('*.js', (req, res, next) => {
 
 app.use(STATIC_PATH, express.static('dist'))
 app.use(STATIC_PATH, express.static('public'))
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.use(cookieSession({
   name: 'session',

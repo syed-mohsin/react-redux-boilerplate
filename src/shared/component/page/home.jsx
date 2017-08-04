@@ -3,11 +3,35 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import injectSheet from 'react-jss'
+import { NotificationContainer, NotificationManager } from 'react-notifications'
+import $ from 'jquery'
 
 import { APP_NAME } from '../../config'
 
-
 const styles = {}
+
+const submitForm = (e) => {
+  e.preventDefault()
+  $('.subscribe-action-button').prop('disabled', true)
+  $.ajax({
+    url: '/api/mail',
+    method: 'post',
+    data: {
+      name: $('#mce-FULL_NAME').val(),
+      email: $('#mce-EMAIL').val(),
+    },
+  })
+  .then(() => {
+    NotificationManager.success('Thank you!')
+    $('#mce-FULL_NAME').val(undefined)
+    $('#mce-EMAIL').val(undefined)
+    $('.subscribe-action-button').prop('disabled', false)
+  })
+  .catch(() => {
+    NotificationManager.error('Please try again')
+    $('.subscribe-action-button').prop('disabled', false)
+  })
+}
 
 const CodeLancerHomePage = () => (
   <div>
@@ -17,6 +41,7 @@ const CodeLancerHomePage = () => (
         { property: 'og:title', content: APP_NAME },
       ]}
     />
+    <NotificationContainer />
     <div className="site-wrapper">
 
       <div className="site-wrapper-inner">
@@ -47,16 +72,16 @@ const CodeLancerHomePage = () => (
 
                 <div className="row">
                   <div className="col-sm-12">
-                    <form className="text-xs-center" action="#" id="subscribe-form" method="post" noValidate>
+                    <form className="text-xs-center" id="subscribe-form" onSubmit={submitForm}>
                       <div className="form-group mb-0">
                         <label htmlFor="mce-FULL_NAME" />
-                        <input type="text" className="form-control input-subscribe" id="mce-FULL_NAME" name="FULL_NAME" placeholder="Enter Full Name" required />
+                        <input type="text" className="form-control input-subscribe" id="mce-FULL_NAME" name="name" placeholder="Enter Full Name" required />
                       </div>
                       <div className="form-group mb-0">
                         <label htmlFor="mce-EMAIL" />
-                        <input type="email" className="form-control input-subscribe" id="mce-EMAIL" name="EMAIL" placeholder="Enter Email Address" required />
+                        <input type="email" className="form-control input-subscribe" id="mce-EMAIL" name="email" placeholder="Enter Email Address" required />
                       </div>
-                      <button type="submit" className="btn btn-white-fill">Join Now</button>
+                      <button type="submit" className="btn btn-white-fill subscribe-action-button">Join Now</button>
                       <p className="text-light mt-1">
                         <small>Stay updated on exciting new coding projects</small>
                       </p>

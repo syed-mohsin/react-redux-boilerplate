@@ -10,6 +10,8 @@ import {
   HOME_PAGE_ROUTE,
 } from '../shared/routes'
 
+import apiRouting from './api/routes'
+
 import renderApp from './render-app'
 
 export default (app: Object) => {
@@ -27,7 +29,7 @@ export default (app: Object) => {
   })
 
   // Add API routes
-  // apiRouting(app)
+  apiRouting(app)
 
   app.get('*', (req, res) => {
     res.status(404).send(renderApp(req.url))

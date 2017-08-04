@@ -67,6 +67,7 @@ const renderApp = (location: string, plainPartialState: ?Object, existingStore: 
         <link href="${STATIC_PATH}/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
         <link rel="stylesheet" href="${STATIC_PATH}/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+        <link rel="stylesheet" href="${STATIC_PATH}/css/react-notifications.css">
         <style>
           /*
            * Globals
