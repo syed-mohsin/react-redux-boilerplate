@@ -8,6 +8,7 @@ import Helmet from 'react-helmet'
 import injectSheet from 'react-jss'
 import classNames from 'classnames'
 import queryString from 'query-string'
+import $ from 'jquery'
 
 import { STATIC_PATH, APP_NAME } from '../../config'
 import QuoteListItem from '../presentational/quote-list-item'
@@ -25,7 +26,8 @@ const styles = {
     backgroundColor: 'rgba(0,0,0,0.3)',
   },
   view: {
-    composes: 'mb-5',
+    composes: 'd-flex flex-column justify-content-between',
+    height: '100vh',
   },
   homeDescription: {
     lineHeight: '48px',
@@ -69,6 +71,12 @@ const styles = {
       marginRight: '100px',
     },
   },
+}
+
+const scrollToQuotes = () => {
+  $('html, body').animate({
+    scrollTop: $('#quotes').offset().top,
+  }, 1000)
 }
 
 class BraquetHomePage extends React.Component {
@@ -140,6 +148,9 @@ class BraquetHomePage extends React.Component {
 
                   <button type="submit" className={classes.homeSubmitButton}>Find quotes</button>
                 </form>
+              </div>
+              <div className="text-center" style={{ paddingBottom: '70px' }} onClick={() => scrollToQuotes()} role="button" tabIndex="-1">
+                V
               </div>
             </div>
             <div id="quotes">
