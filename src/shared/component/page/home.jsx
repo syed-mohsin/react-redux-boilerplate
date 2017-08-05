@@ -38,7 +38,7 @@ const CodeLancerHomePage = () => (
   <div>
     <Helmet
       meta={[
-        { name: 'description', content: 'Codelancer matches talented coders with exciting and fast-paced projects' },
+        { name: 'description', content: 'Codelancer matches talented student software engineers and web developers from top colleges with exciting and fast-paced freelance contracts' },
         { property: 'og:title', content: APP_NAME },
       ]}
     />
