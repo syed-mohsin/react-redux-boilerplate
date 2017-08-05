@@ -300,7 +300,7 @@ const renderApp = (location: string, plainPartialState: ?Object, existingStore: 
             border-radius: 50px;
             position: relative;
             height: 36px;
-            width: 215px;
+            width: 213px;
           }
           .toggle_radio > * {
             float: left;
