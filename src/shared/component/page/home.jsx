@@ -34,12 +34,14 @@ const submitForm = (e) => {
   })
 }
 
+const title = 'Hire Skilled Freelance College Coders'
 const CodeLancerHomePage = () => (
   <div>
     <Helmet
+      title={title}
       meta={[
         { name: 'description', content: 'Codelancer matches talented student software engineers and web developers from top colleges with exciting and fast-paced freelance contracts' },
-        { property: 'og:title', content: APP_NAME },
+        { property: 'og:title', content: `${APP_NAME} - ${title}` },
       ]}
     />
     <NotificationContainer />
