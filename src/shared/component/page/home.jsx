@@ -69,7 +69,7 @@ const CodeLancerHomePage = () => (
                 <div className="row">
                   <div className="col-sm-12 text-xs-center">
                     <h3 className="title text-white">Freelance for College Coders</h3>
-                    <p className="text-light sub-title hidden-sm-down">Hire a talented young developer for your next project</p>
+                    <p className="text-light sub-title mb-0">Get matched with a talented young developer for your next project</p>
                   </div>
                 </div>
 
