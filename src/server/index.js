@@ -56,6 +56,11 @@ app.use('/robots.txt', (req, res) => {
   res.sendFile(path.resolve('./public/robots.txt'))
 })
 
+// get wakemydyno.txt
+app.use('/wakemydyno.txt', (req, res) => {
+  res.sendFile(path.resolve('./public/wakemydyno.txt'))
+})
+
 routing(app)
 
 http.listen(WEB_PORT, () => {
