@@ -106,7 +106,7 @@ const CodeLancerHomePage = () => (
 
           <div className="mastfoot">
             <div className="inner">
-              <p>© 2017 Codelancer Inc. | Privacy Policy</p>
+              <p>© 2017 Codelancer Inc.</p>
             </div>
           </div>
 
