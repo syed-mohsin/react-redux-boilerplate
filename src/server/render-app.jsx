@@ -19,6 +19,7 @@ const googleAnalytics = `<script>
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
   ga('create', '${process.env.GOOGLE_ANALYTICS_TRACKING_ID || ''}', 'auto');
+  ga('send', 'pageview');
   </script>`
 
 const fullStoryAnalytics = `<script>
